@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Area2D.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 77.0959, 41.48 )
+
+[node name="Trigger" type="Area2D"]
+modulate = Color( 0.0862745, 0.254902, 0.913725, 1 )
+self_modulate = Color( 0.0823529, 0.360784, 0.94902, 1 )
+position = Vector2( 664.487, 687.14 )
+input_pickable = false
+script = ExtResource( 1 )
+char_nodepath = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -7.55115, 3.77539 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.42648, -0.934265 )
+scale = Vector2( 3.05073, 1.7675 )
+texture = ExtResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_Trigger_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Trigger_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Trigger_body_exited"]
