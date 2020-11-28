@@ -1,75 +1,86 @@
+#tool
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var arrayPosTrapdoor = []
+var doUntill = true;
+var wrightIntoSpawnArray
+var spawnCoordX = 200;
+var spawnCoordY = 200;
+
 var trapDoor = load("res://Scenes/TrapDoor.tscn")
 var trap = trapDoor.instance()
 var enemiesGenerated = []
-var numberOfEnemies = 8
+var numberOfEnemies = 30
 var player
 var randx 
 var randy 
 var trap1
 var trap2
+var lostScreen
 
-var tryUntil = 0
 
+#wait a second timer
+
+
+
+func initialize_spots(arrayOfSpots):
+	while (doUntill == true):
+		
+		if (spawnCoordX > 1900 && spawnCoordY > 1000):
+			doUntill = false
+		
+		if (spawnCoordX > 1900):
+			spawnCoordY = spawnCoordY + 300
+			spawnCoordX = 50 
+			
+		else:
+			spawnCoordX = spawnCoordX + 400
+		pass
+		
+		
+		wrightIntoSpawnArray = Vector2(spawnCoordX , spawnCoordY)
+		arrayOfSpots.append(wrightIntoSpawnArray)
+	
+	
+	pass
+	
+
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	initialize_spots(arrayPosTrapdoor)
+	randomize()
+	var numb = rand_range(0 , 1000)
+	
+	
 	player = get_node("Player")
-	trap1 = get_node("Trigger")
-	trap2 = get_node("Trigger2")
 	
 	
-	
-	#if (trap1.position == trap2.position):
-	#	print("overlaps")
-	trap1.position = trap1.position + Vector2(0,100)
-	print(trap1.position)
 	
 	for n in range(numberOfEnemies):
-		randomize()
-		randx = rand_range(0 , 1000)
-		randy = rand_range(0 , 1000)
-		
-		
-		
+
+#		
+
 		var trapToBeMade = "trap"+str(n)
 		trapToBeMade = trapDoor.instance()
+
 		add_child(trapToBeMade)
+		move_child(trapToBeMade,0)
 		enemiesGenerated.append(trapToBeMade)
-		
-		enemiesGenerated[n].position = Vector2(randx,randy)
-		print(enemiesGenerated[n].get_position())
-		
-		
-		
-#		for i in range(enemiesGenerated.size()):
-#			if (enemiesGenerated[i].position == enemiesGenerated[n].position + Vector2(300,300)):
-#				randomize()
-#				enemiesGenerated[i].position = Vector2(randx,randy)
-		
-		
-		#enemiesGenerated[n] = Vector2(randx,randy) works too 
-		
-		#print(enemiesGenerated)
-		
+		enemiesGenerated[n].position = Vector2(arrayPosTrapdoor[rand_range(0,arrayPosTrapdoor.size())])
 
-
-			
-	
-	
-	#for n in range(numberOfEnemies):
-	
-	
 
 func _process(delta):
-
-	for n in range(numberOfEnemies):
-		if (enemiesGenerated[n].isInArea == true):
-		 player.alive = false
 	
+	for n in range(numberOfEnemies):
+		if (player.alive == false):
+			get_node("CanvasLayer/Lost").visible = true
+	pass
 		
 		
+
+
+func _on_Button_pressed():
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

@@ -2,30 +2,49 @@ extends KinematicBody2D
 var alive = true
 
 
-var speed = 700
-var friction = 0.75
-var acceleration = 1.5
+var speed = 600
+var friction = 0.5
+var acceleration = 0.2
 var velocity = Vector2.ZERO
+
+var offsetForClampXRight = 80
+var offsetForClampYBottom = 105
+var offsetForClampYTop = 70
+
 
 func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
-	if Input.is_action_pressed("right"):
+
+	if Input.is_action_pressed("right") && alive == true:
 		input_velocity.x += 1
-	if Input.is_action_pressed("left"):
+		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.play("Run")
+	if Input.is_action_pressed("left") && alive == true:
 		input_velocity.x -= 1
-	if Input.is_action_pressed("down"):
+		$AnimatedSprite.flip_h = false
+		$AnimatedSprite.play("Run")
+	if Input.is_action_pressed("down") && alive == true:
 		input_velocity.y += 1
-	if Input.is_action_pressed("up"):
+		$AnimatedSprite.play("Run")
+	if Input.is_action_pressed("up") && alive == true:
 		input_velocity.y -= 1
+		$AnimatedSprite.play("Run")
 	input_velocity = input_velocity.normalized() * speed
 	# If there's input, accelerate to the input velocity
 	if input_velocity.length() > 0:
 		velocity = velocity.linear_interpolate(input_velocity, acceleration)
-	else:
+	elif alive == true:
 		# If there's no input, slow down to (0, 0)
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
-	velocity = move_and_slide(velocity)
+		$AnimatedSprite.play("Idle")
+	if alive == true:
+		velocity = move_and_slide(velocity)
+	
+	position.x = clamp(position.x,0,get_viewport_rect().end.x - offsetForClampXRight)
+	position.y = clamp(position.y,offsetForClampYTop,get_viewport_rect().end.y - offsetForClampYBottom)
+	
+	
 	
 	if(alive == false):
-		queue_free() 
+		$AnimatedSprite.play("Falling")

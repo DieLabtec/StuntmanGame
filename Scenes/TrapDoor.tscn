@@ -1,27 +1,55 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Area2D.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Trapdoor/trapdoor_ph01_idle.png" type="Texture" id=2]
+[ext_resource path="res://Trapdoor/trapdoor_ph01_action.01.png" type="Texture" id=3]
+[ext_resource path="res://Trapdoor/trapdoor_ph01_action.02.png" type="Texture" id=4]
+[ext_resource path="res://Trapdoor/trapdoor_ph01_action.03.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 77.0959, 41.48 )
+extents = Vector2( 44.6591, 21.621 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "closed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "opening",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "closing",
+"speed": 30.0
+} ]
 
 [node name="Trigger" type="Area2D"]
-modulate = Color( 0.0862745, 0.254902, 0.913725, 1 )
-self_modulate = Color( 0.0823529, 0.360784, 0.94902, 1 )
-position = Vector2( 664.487, 687.14 )
+position = Vector2( 70.6033, 37.5403 )
+scale = Vector2( 0.5, 0.5 )
 input_pickable = false
 script = ExtResource( 1 )
 char_nodepath = NodePath("../Player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7.55115, 3.77539 )
+position = Vector2( 2.60715, -2.21156 )
+scale = Vector2( 2.25, 1.75 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.42648, -0.934265 )
-scale = Vector2( 3.05073, 1.7675 )
+visible = false
+position = Vector2( 9.97025, 0.414337 )
+scale = Vector2( 1.33647, 1.40406 )
 texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.1225, 0.988831 )
+frames = SubResource( 2 )
+animation = "closing"
+frame = 3
 [connection signal="area_entered" from="." to="." method="_on_Trigger_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Trigger_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Trigger_body_exited"]
