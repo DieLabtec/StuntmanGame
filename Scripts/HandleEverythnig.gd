@@ -26,61 +26,64 @@ var lostScreen
 
 func initialize_spots(arrayOfSpots):
 	while (doUntill == true):
-		
+
 		if (spawnCoordX > 1900 && spawnCoordY > 1000):
 			doUntill = false
-		
+
 		if (spawnCoordX > 1900):
 			spawnCoordY = spawnCoordY + 300
 			spawnCoordX = 50 
-			
+
 		else:
 			spawnCoordX = spawnCoordX + 400
 		pass
-		
-		
+
+
 		wrightIntoSpawnArray = Vector2(spawnCoordX , spawnCoordY)
 		arrayOfSpots.append(wrightIntoSpawnArray)
-	
-	
-	pass
-	
 
-	
+
+	pass
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	initialize_spots(arrayPosTrapdoor)
-	randomize()
-	var numb = rand_range(0 , 1000)
-	
-	
-	player = get_node("Player")
-	
-	
-	
-	for n in range(numberOfEnemies):
-
-#		
-
-		var trapToBeMade = "trap"+str(n)
-		trapToBeMade = trapDoor.instance()
-
-		add_child(trapToBeMade)
-		move_child(trapToBeMade,0)
-		enemiesGenerated.append(trapToBeMade)
-		enemiesGenerated[n].position = Vector2(arrayPosTrapdoor[rand_range(0,arrayPosTrapdoor.size())])
-
+#	initialize_spots(arrayPosTrapdoor)
+#	randomize()
+#	var numb = rand_range(0 , 1000)
+#
+#
+#	player = get_node("Player")
+#
+#
+#
+#	for n in range(numberOfEnemies):
+#
+##		
+#
+#		var trapToBeMade = "trap"+str(n)
+#		print(trapToBeMade)
+#		trapToBeMade = trapDoor.instance()
+#		print(trapToBeMade)
+#
+#		add_child(trapToBeMade)
+#		move_child(trapToBeMade,0)
+#		enemiesGenerated.append(trapToBeMade)
+#		enemiesGenerated[n].position = Vector2(arrayPosTrapdoor[rand_range(0,arrayPosTrapdoor.size())])
+		pass
 
 func _process(delta):
-	
-	for n in range(numberOfEnemies):
-		if (player.alive == false):
+
+#	for n in range(numberOfEnemies):
+		if (Status.alive == false):
 			get_node("CanvasLayer/Lost").visible = true
-	pass
-		
-		
+#	pass
+
+
 
 
 func _on_Button_pressed():
+	randomize()
 	get_tree().reload_current_scene()
 	pass # Replace with function body.

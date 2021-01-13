@@ -1,0 +1,61 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scripts/ImproveMovement.gd" type="Script" id=1]
+[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.04.png" type="Texture" id=2]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.02.png" type="Texture" id=3]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.04.png" type="Texture" id=4]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_idle.png" type="Texture" id=5]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.03.png" type="Texture" id=6]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.05.png" type="Texture" id=7]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.06.png" type="Texture" id=8]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.00.png" type="Texture" id=9]
+[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.01.png" type="Texture" id=10]
+[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.03.png" type="Texture" id=11]
+[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.01.png" type="Texture" id=12]
+[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.02.png" type="Texture" id=13]
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 24.9139
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 2 ), null ],
+"loop": false,
+"name": "Falling",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 13.8284, 81.5452 )
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+position = Vector2( -492.336, -212.652 )
+texture = SubResource( 2 )
+normal_map = ExtResource( 5 )
+region_rect = Rect2( 10, 0, 0, 0 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0.127281, -14.5928 )
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.504166, -197.725 )
+scale = Vector2( 0.835455, 0.753805 )
+frames = SubResource( 4 )
+animation = "Idle"

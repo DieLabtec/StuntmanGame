@@ -9,6 +9,8 @@ export(NodePath) var animationSpritePath
 var animationSprite
 var char_node
 
+
+
 var playerIsDead = false
 var isInArea = false
 var trapDoorOpened = false
@@ -40,7 +42,7 @@ func endOfTimer():
 func _on_Trigger_body_entered(Player):
 	print("entered")
 	isInArea=true
-	
+
 	pass # Replace with function body. 
 	
 func _on_Trigger_body_exited(Player):
@@ -52,9 +54,10 @@ func _on_Trigger_body_exited(Player):
 
  
 func _process(delta):
-	if isInArea == true && trapDoorOpened == true:
-		char_node.alive = false
-		
+#	if isInArea == true && trapDoorOpened == true:
+#		Status.alive = false
+#		Status.diedTrapDoor = true
+	pass
 
 
 
