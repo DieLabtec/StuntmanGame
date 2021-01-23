@@ -10,7 +10,7 @@
 [ext_resource path="res://CoffeCup/item_cafe.05.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.9513, 18.5444 )
+extents = Vector2( 35.5296, 32.8914 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -33,6 +33,6 @@ position = Vector2( -2.51959, -23.2328 )
 scale = Vector2( 0.135522, 0.122614 )
 frames = SubResource( 2 )
 animation = "spining"
-frame = 1
+frame = 5
 playing = true
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

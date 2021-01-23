@@ -1,33 +1,35 @@
 extends Area2D
 var isTaken = false
 
-
-
+signal scoreIncreased
 
 
 func _ready():
-	
+	connect("scoreIncreased" , self , "increaseScore")
+#	labelHS = 
 	pass # Replace with function body.
 
 
-
-
+func increaseScore():
+	Status.currentScore = Status.currentScore + 100
+	Spawn.labelHSInstance.text = str(Status.currentScore)
+	print(Status.currentScore)
 
 func _on_Area2D_body_entered(body):
-#	var arr1 = [1, 2 ,3]
-#	var arr2 = []
-#
-#	arr2 = arr1.duplicate()
-#	arr2.remove(1)
-#	print(arr1.size())
-#	print(arr2.size())
+	emit_signal("scoreIncreased")
 	
-	Spawn.copyAllPoints = Spawn.AllPoints.duplicate()
-	print(Spawn.AllPoints.size())
-	for n in range(Spawn.AllItems.size()):
-		Spawn.positionForThisCycle = rand_range(0,Spawn.copyAllPoints.size())
-		Spawn.AllItems[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycle]
+	if(visible == true):
+		Status.numberOfCoffeCups -= 1
+		visible = false
+		
+		if(Status.numberOfCoffeCups == 0):
+			Spawn.coffeCupOnEnter()
+#			
+			for n in range(Spawn.AllCups.size()):
+				Spawn.AllCups[n].visible = true
+				Spawn.positionForThisCycleCoffeCup = rand_range(13,Spawn.copyAllPoints.size())
+				Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
+			Status.numberOfCoffeCups = 3
+
 	
-	position = Spawn.copyAllPoints[rand_range(0,Spawn.copyAllPoints.size())]
-	
-	pass # Replace with function body.
+pass # Replace with function body.

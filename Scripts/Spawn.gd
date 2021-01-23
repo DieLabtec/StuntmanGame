@@ -1,26 +1,35 @@
 extends Node
 var trapDoor = preload("res://Scenes/TrapDoor.tscn")
 var coffeCup = preload("res://Scenes/CoffeCup.tscn")
+var player = preload("res://Scenes/Player.tscn")
+var labelHighScore = preload("res://Scenes/HighScoreLabel.tscn")
 
 var arrStartingX = 65 #65
 var arrStartingY = 100
 var arrAddingToX = 136
 var arrAddingToy = 78
 var arrEndPointX = 1790 #1790 
-var arrEndPointY = 1000 #1100
+var arrEndPointY = 900 #1100
 
 var alive = true
 
-var spawnTrapdoor
+#var spawnTrapdoor = 
+var spawnTrapdoor = trapDoor.instance()
+
 var spawnCup
 
-var positionForThisCycle
+var Player = player.instance()
+var labelHSInstance = labelHighScore.instance()
+
+var positionForThisCycleTrapDoor
+var positionForThisCycleCoffeCup
 
 
 var AllPoints = []
 var copyAllPoints = []
 
 var AllItems = []
+var AllCups = []
 
 func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY , 
 										endPointX, endPointY, arrayToBeFilled):
@@ -43,6 +52,20 @@ func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY ,
 			arrayToBeFilled.append(wrightIntoArray)
 			
 			pass
+			
+func coffeCupOnEnter():
+	Spawn.copyAllPoints = Spawn.AllPoints.duplicate()
+	print(Spawn.AllPoints.size())
+	for n in range(Spawn.AllItems.size()):
+		Spawn.positionForThisCycleTrapDoor = rand_range(12,Spawn.copyAllPoints.size())
+		Spawn.AllItems[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleTrapDoor]
+#		if(Spawn.AllItems[n].overlaps_body(Spawn.Player)):
+#			print("please")
+		copyAllPoints.remove(positionForThisCycleTrapDoor)
+		Spawn.AllItems[n].timer.start()
+		Spawn.AllItems[n].trapDoorOpened = false
+		Spawn.AllItems[n].playClosing()
+	pass
 
 
 func spawnTrapDoor():
@@ -56,45 +79,60 @@ func spawnTrapDoor():
 	
 pass
 
-func copyArray(from , to):
-	to = from
+
+
+func spawncup():
+	spawnCup = coffeCup.instance()
+	add_child(spawnCup)
+	move_child(spawnCup , 0)
+	AllCups.append(spawnCup)
+	pass
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	spawnCup = coffeCup.instance()
-	add_child(spawnCup)
-	spawnCup.position = Vector2(500 , 500)
 	
+	add_child(labelHSInstance)
+	print(labelHSInstance.text + "stuffs")
+	
+	add_child(Player)
+	move_child(Player , 4)
 	
 	initializeTrapsSpawnPoints(arrStartingX , arrStartingY , arrAddingToX , arrAddingToy , arrEndPointX , arrEndPointY ,AllPoints)
-	
+	print(AllPoints.size())
 	copyAllPoints = AllPoints.duplicate()
-	for n in range(15):
+	
+	for n in range(3):
+		spawncup()
+		positionForThisCycleCoffeCup = rand_range(13,copyAllPoints.size())
+		AllCups[n].position = copyAllPoints[positionForThisCycleCoffeCup]
+#		print(copyAllPoints.size())
+		copyAllPoints.remove(positionForThisCycleCoffeCup)
+#		print(copyAllPoints.size())
+	pass
+	
+	for n in range(20):
 		spawnTrapDoor()
-		positionForThisCycle = rand_range(0,copyAllPoints.size())
-		AllItems[n].position = copyAllPoints[positionForThisCycle]
-		print(copyAllPoints.size())
-		copyAllPoints.remove(positionForThisCycle)
-		print(copyAllPoints.size())
+		positionForThisCycleTrapDoor = rand_range(12,copyAllPoints.size())
+		AllItems[n].position = copyAllPoints[positionForThisCycleTrapDoor]
+#		print(copyAllPoints.size())
+		copyAllPoints.remove(positionForThisCycleTrapDoor)
+#		print(copyAllPoints.size())
 	pass
 	
 	
 	
-#	spawnTrapDoor()
-#	AllItems[0].position = AllPoints[0]
+
 	
 	
 	
 	
-	pass # Replace with function body.
+	pass 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
-	
-	
 	
 	pass

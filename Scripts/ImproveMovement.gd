@@ -7,12 +7,14 @@ var friction = 0.5
 var acceleration = 0.2
 var velocity = Vector2.ZERO
 
-var offsetForClampXRight = 80
-var offsetForClampYBottom = 70
-var offsetForClampYTop = 50
+var offsetForClampXRight = 30
+var offsetForClampYBottom = 0
+var offsetForClampYTop = 120
 
 
 func _physics_process(delta):
+	
+	
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
 
@@ -43,8 +45,8 @@ func _physics_process(delta):
 	
 	
 	
-	position.x = clamp(position.x,0,get_viewport_rect().end.x - offsetForClampXRight)
-	position.y = clamp(position.y,offsetForClampYTop,get_viewport_rect().end.y - offsetForClampYBottom)
+	position.x = clamp(position.x,30,get_viewport_rect().end.x -offsetForClampXRight)
+	position.y = clamp(position.y,offsetForClampYTop,get_viewport_rect().end.y + offsetForClampYBottom)
 #
 	
 	

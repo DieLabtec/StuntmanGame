@@ -15,7 +15,7 @@ var playerIsDead = false
 var isInArea = false
 var trapDoorOpened = false
 var timer 
-var waitTimeForTrapDoor = 5
+var waitTimeForTrapDoor = 2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,6 +45,9 @@ func _on_Trigger_body_entered(Player):
 
 	pass # Replace with function body. 
 	
+func playClosing():
+	$AnimatedSprite.play("closing")
+	
 func _on_Trigger_body_exited(Player):
 	print("exited")
 	isInArea=false
@@ -54,9 +57,13 @@ func _on_Trigger_body_exited(Player):
 
  
 func _process(delta):
-#	if isInArea == true && trapDoorOpened == true:
-#		Status.alive = false
-#		Status.diedTrapDoor = true
+	if isInArea == true && trapDoorOpened == true:
+		Status.alive = false
+		Status.diedTrapDoor = true
+		
+	if Input.is_action_pressed("test"):
+		Status.alive = false
+		
 	pass
 
 

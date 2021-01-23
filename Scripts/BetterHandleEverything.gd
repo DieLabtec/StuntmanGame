@@ -15,27 +15,18 @@ var trapDoorArray = []
 var howManyTrapDoors = 10
 var coord
 
+
+
 var coffeCupArray = []
 var howManyCoffeCups = 3
 
 var trapDoor = preload("res://Scenes/TrapDoor.tscn")
 var coffeCup = preload("res://Scenes/CoffeCup.tscn")
 
+
 var coordRand
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-#func generateRandomCoord(coordToBeGenerated , arrayOfPoints):
-#	var coord = rand_range(0 , arrayOfPoints.size()) +  rand_range(0 , arrayOfPoints.size()) + rand_range(0 , arrayOfPoints.size())
-#	coord = coord/3
-#	coord = coord as int
-#	print(coord)
-#
-#	pass
 
 func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY , 
 										endPointX, endPointY, arrayToBeFilled):
@@ -84,45 +75,26 @@ func clearItem(arrayOfTheObjectToBeCleared):
 			arrayOfTheObjectToBeCleared[n].queue_free()
 			pass
 
+
+	
+
 func _ready():
 	randomize()
 	
 	player = get_node("Player")
 	
-#	#trapdoor 
-#	initializeTrapsSpawnPoints(arrStartingX , arrStartingY , arrAddingToX , 
-#	arrAddingToy, arrEndPointX , arrEndPointY ,trapDoorSpawnPoints)
-#
-#	spawnEnemies(trapDoorArray , trapDoorSpawnPoints , trapDoor , howManyTrapDoors)
-##
-#	spawnEnemies(coffeCupArray , trapDoorSpawnPoints , coffeCup , howManyCoffeCups)
 
-#	print(trapDoorSpawnPoints)
 	
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-#	if Input.is_action_pressed("test"):
-#		print("works3")
-#	if(HighScore.coffeCupOnScreen == 0):
-##		clearItem(trapDoorArray)
-#		HighScore.coffeCupOnScreen = 3
-##
-#		for n in range(trapDoorArray.size()):
-#			trapDoorArray[n].position = Vector2(trapDoorSpawnPoints[rand_range(0 , trapDoorSpawnPoints.size())])
-#		initializeTrapsSpawnPoints(arrStartingX , arrStartingY , arrAddingToX , 
-#			arrAddingToy, arrEndPointX , arrEndPointY ,trapDoorSpawnPoints)
-		
-#		spawnEnemies(trapDoorArray , trapDoorSpawnPoints , trapDoor , howManyTrapDoors)
-#
-#		spawnEnemies(coffeCupArray , trapDoorSpawnPoints , coffeCup , howManyCoffeCups)
-		
-		
+func _process(delta):		
+#	while(Spawn.spawnTrapdoor.overlaps_area(Spawn.Player) == true):
+#		print("overlaps")
 	
-		
-		
+	
+	
 	if (Status.alive == false):
 			get_node("CanvasLayer/Lost").visible = true
 	
@@ -132,7 +104,17 @@ func _process(delta):
 	pass
 	
 func _on_Button_pressed():
+	Spawn.labelHSInstance.text = str(0)
+	Status.currentScore = 0
 	Status.alive = true
+	print(Status.alive)
+	Spawn.coffeCupOnEnter()
+	position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
+	for n in range(Spawn.AllCups.size()):
+		Spawn.AllCups[n].visible = true	
+		Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
+		Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
+	Status.numberOfCoffeCups = 3
 	randomize()
 	get_tree().reload_current_scene()
 	

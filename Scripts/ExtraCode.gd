@@ -68,3 +68,17 @@ randx = rand_range(0 , 1000)
 		if ((trap1.position.x >= trap2.position.x && trap1.position.x <= trap2.position.x + distanceBeforeOverlap || trap2.position.x >= trap1.position.x && trap2.position.x <= trap1.position.x +distanceBeforeOverlap) && (trap2.position.y >= trap1.position.y && trap2.position.y <= trap1.position.y + distanceBeforeOverlap ||trap2.position.y <= trap1.position.y && trap2.position.y >= trap1.position.y - distanceBeforeOverlap)):
 			print("hello")
 		pass
+		
+	#	var arr1 = [1, 2 ,3]
+#	var arr2 = []
+#
+#	arr2 = arr1.duplicate()
+#	arr2.remove(1)
+#	print(arr1.size())
+#	print(arr2.size())
+	
+#	Spawn.copyAllPoints = Spawn.AllPoints.duplicate()
+#	print(Spawn.AllPoints.size())
+#	for n in range(Spawn.AllItems.size()):
+#		Spawn.positionForThisCycleTrapDoor = rand_range(0,Spawn.copyAllPoints.size())
+#		Spawn.AllItems[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleTrapDoor]
