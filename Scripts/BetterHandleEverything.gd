@@ -107,6 +107,8 @@ func _on_Button_pressed():
 	Spawn.labelHSInstance.text = str(0)
 	Status.currentScore = 0
 	Status.alive = true
+	Status.diedMissile = false
+	Status.diedTrapDoor = false
 	print(Status.alive)
 	Spawn.coffeCupOnEnter()
 	position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]

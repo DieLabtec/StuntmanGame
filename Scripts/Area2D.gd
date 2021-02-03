@@ -45,15 +45,15 @@ func _on_Trigger_body_entered(Player):
 
 	pass # Replace with function body. 
 	
-func playClosing():
-	$AnimatedSprite.play("closing")
+
 	
 func _on_Trigger_body_exited(Player):
 	print("exited")
 	isInArea=false
 	pass # Replace with function body.
 
-
+func playClosing():
+	$AnimatedSprite.play("closing")
 
  
 func _process(delta):

@@ -3,9 +3,11 @@ var alive = true
 
 
 var speed = 600
-var friction = 0.5
+var friction = 1 #0.5
 var acceleration = 0.2
 var velocity = Vector2.ZERO
+var runingAnimation = "Run"
+var canEnterPanicMode = true
 
 var offsetForClampXRight = 30
 var offsetForClampYBottom = 0
@@ -17,21 +19,29 @@ func _physics_process(delta):
 	
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
+	
+	if Input.is_action_just_pressed("ability") && canEnterPanicMode == true:
+		print("workssss")
+		canEnterPanicMode = false
+		speed = 800
+		runingAnimation = "Panic"
+		Status.panicModeCD.start()
+		Status.panicModeDuration.start()
 
 	if Input.is_action_pressed("right") && Status.alive == true:
 		input_velocity.x += 1
 		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play("Run")
+		$AnimatedSprite.play(runingAnimation)
 	if Input.is_action_pressed("left") && Status.alive == true:
 		input_velocity.x -= 1
 		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("Run")
+		$AnimatedSprite.play(runingAnimation)
 	if Input.is_action_pressed("down") && Status.alive == true:
 		input_velocity.y += 1
-		$AnimatedSprite.play("Run")
+		$AnimatedSprite.play(runingAnimation)
 	if Input.is_action_pressed("up") && Status.alive == true:
 		input_velocity.y -= 1
-		$AnimatedSprite.play("Run")
+		$AnimatedSprite.play(runingAnimation)
 	input_velocity = input_velocity.normalized() * speed
 	# If there's input, accelerate to the input velocity
 	if input_velocity.length() > 0:
@@ -52,3 +62,6 @@ func _physics_process(delta):
 	
 	if(Status.alive == false && Status.diedTrapDoor):
 		$AnimatedSprite.play("Falling")
+		
+	if(Status.alive == false && Status.diedMissile):
+		$AnimatedSprite.play("Burning")

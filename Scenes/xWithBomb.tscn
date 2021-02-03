@@ -1,0 +1,60 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Scripts/Rocket.gd" type="Script" id=1]
+[ext_resource path="res://BombShell/ActualBomb/bomb_1.png" type="Texture" id=2]
+[ext_resource path="res://BombShell/ActualBomb/bomb_2.png" type="Texture" id=3]
+[ext_resource path="res://BombShell/ActualBomb/bomb_10.png" type="Texture" id=4]
+[ext_resource path="res://BombShell/ActualBomb/bomb_6.png" type="Texture" id=5]
+[ext_resource path="res://BombShell/ActualBomb/bomb_8.png" type="Texture" id=6]
+[ext_resource path="res://BombShell/ActualBomb/bomb_5.png" type="Texture" id=7]
+[ext_resource path="res://BombShell/ActualBomb/bomb_4.png" type="Texture" id=9]
+[ext_resource path="res://BombShell/ActualBomb/bomb_9.png" type="Texture" id=10]
+[ext_resource path="res://BombShell/ActualBomb/bomb_3.png" type="Texture" id=11]
+[ext_resource path="res://BombShell/ActualBomb/bomb_7.png" type="Texture" id=12]
+[ext_resource path="res://BombShell/ActualBomb/bomb_11.png" type="Texture" id=13]
+[ext_resource path="res://BombShell/Explosion/fx_mine_explosion.02.png" type="Texture" id=17]
+[ext_resource path="res://BombShell/Explosion/fx_mine_explosion.03.png" type="Texture" id=18]
+[ext_resource path="res://BombShell/Explosion/fx_mine_explosion.01.png" type="Texture" id=19]
+[ext_resource path="res://BombShell/Explosion/fx_mine_explosion.04.png" type="Texture" id=20]
+[ext_resource path="res://BombShell/Crosshair/Target_1.png" type="Texture" id=21]
+[ext_resource path="res://BombShell/Crosshair/Target_2.png" type="Texture" id=22]
+[ext_resource path="res://BombShell/Crosshair/Target_3.png" type="Texture" id=23]
+[ext_resource path="res://BombShell/Crosshair/Target_4.png" type="Texture" id=24]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 9.05522
+height = 36.8497
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "x",
+"speed": 5.0
+}, {
+"frames": [ null, ExtResource( 2 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), null ],
+"loop": false,
+"name": "bombFalling",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "crosshair",
+"speed": 5.0
+} ]
+
+[node name="xWithBomb" type="Area2D"]
+position = Vector2( 146.583, 196.121 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.19696, -6.47255 )
+rotation = -1.58789
+scale = Vector2( 2.63734, 1.31039 )
+shape = SubResource( 1 )
+
+[node name="bomb" type="AnimatedSprite" parent="."]
+position = Vector2( 0.682556, -112.9 )
+scale = Vector2( 0.276145, 0.210268 )
+frames = SubResource( 2 )
+animation = "bombFalling"

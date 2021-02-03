@@ -3,6 +3,7 @@ var trapDoor = preload("res://Scenes/TrapDoor.tscn")
 var coffeCup = preload("res://Scenes/CoffeCup.tscn")
 var player = preload("res://Scenes/Player.tscn")
 var labelHighScore = preload("res://Scenes/HighScoreLabel.tscn")
+var bombWithX = preload("res://Scenes/xWithBomb.tscn")
 
 var arrStartingX = 65 #65
 var arrStartingY = 100
@@ -15,6 +16,7 @@ var alive = true
 
 #var spawnTrapdoor = 
 var spawnTrapdoor = trapDoor.instance()
+var spawnBombWithX = bombWithX.instance()
 
 var spawnCup
 
@@ -94,11 +96,18 @@ func spawncup():
 func _ready():
 	randomize()
 	
+	#adds bomb with x to the scene
+	add_child(spawnBombWithX)
+	spawnBombWithX.position = Vector2(-200 , -200)
+	
+	
+	#adds label with current score to the scene
 	add_child(labelHSInstance)
 	print(labelHSInstance.text + "stuffs")
 	
+	#adds player to the scene
 	add_child(Player)
-	move_child(Player , 4)
+	move_child(Player , 5)
 	
 	initializeTrapsSpawnPoints(arrStartingX , arrStartingY , arrAddingToX , arrAddingToy , arrEndPointX , arrEndPointY ,AllPoints)
 	print(AllPoints.size())
