@@ -14,6 +14,8 @@ var trapDoorSpawnPoints = []
 var trapDoorArray = []
 var howManyTrapDoors = 10
 var coord
+var delayBeforeEndScreen
+var triggerDelay = true
 
 
 
@@ -25,7 +27,7 @@ var coffeCup = preload("res://Scenes/CoffeCup.tscn")
 
 
 var coordRand
-
+onready var loseScreen = get_node("CanvasLayer/Lost")
 
 
 func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY , 
@@ -81,9 +83,16 @@ func clearItem(arrayOfTheObjectToBeCleared):
 func _ready():
 	randomize()
 	
+	position = Vector2(0,0)
+	
 	player = get_node("Player")
 	
-
+	delayBeforeEndScreen = Timer.new()
+	delayBeforeEndScreen.set_one_shot(true)
+	delayBeforeEndScreen.set_wait_time(2)
+	delayBeforeEndScreen.connect("timeout",self,"loseScreenAppear")
+	add_child(delayBeforeEndScreen)
+	
 	
 	pass # Replace with function body.
 
@@ -96,14 +105,40 @@ func _process(delta):
 	
 	
 	if (Status.alive == false):
-			get_node("CanvasLayer/Lost").visible = true
+#			get_node("CanvasLayer/Lost").visible = true
+			
+			if(triggerDelay == true):
+				triggerDelay = false
+				delayBeforeEndScreen.start()
+#			loseScreen.visible = true
 	
-	
-	
+	if (Input.is_action_pressed("ui_accept") && loseScreen.visible == true):
+		Spawn.labelHSInstance.text = str(0)
+		Status.currentScore = 0
+		Status.alive = true
+		Status.diedMissile = false
+		Status.diedTrapDoor = false
+		print(Status.alive)
+		Spawn.coffeCupOnEnter()
+		position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
+		for n in range(Spawn.AllCups.size()):
+			Spawn.AllCups[n].visible = true	
+			Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
+			Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
+		for n in range(Spawn.AllMine.size()):
+			Spawn.AllMine[n].mineCleanUp()
+			Spawn.AllMine[n].position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
+		Status.numberOfCoffeCups = 3
+		randomize()
+		get_tree().reload_current_scene()
 	
 	pass
 	
+	
+
+	
 func _on_Button_pressed():
+	triggerDelay = true
 	Spawn.labelHSInstance.text = str(0)
 	Status.currentScore = 0
 	Status.alive = true
@@ -116,11 +151,18 @@ func _on_Button_pressed():
 		Spawn.AllCups[n].visible = true	
 		Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
 		Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
+	for n in range(Spawn.AllMine.size()):
+		Spawn.AllMine[n].mineCleanUp()
+		Spawn.AllMine[n].position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
 	Status.numberOfCoffeCups = 3
 	randomize()
 	get_tree().reload_current_scene()
 	
 	pass
 
+
+func loseScreenAppear():
+	loseScreen.visible = true
+	
 
 

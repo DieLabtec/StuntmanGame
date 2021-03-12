@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://urban_level_test.png" type="Texture" id=1]
+
+[node name="urban_level_test" type="Sprite"]
+position = Vector2( 9.43275, 0.651825 )
+scale = Vector2( 1.00796, 1.014 )
+texture = ExtResource( 1 )
+centered = false

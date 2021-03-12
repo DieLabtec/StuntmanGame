@@ -58,3 +58,5 @@ position = Vector2( 0.682556, -112.9 )
 scale = Vector2( 0.276145, 0.210268 )
 frames = SubResource( 2 )
 animation = "bombFalling"
+frame = 16
+playing = true

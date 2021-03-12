@@ -13,6 +13,10 @@ var offsetForClampXRight = 30
 var offsetForClampYBottom = 0
 var offsetForClampYTop = 120
 
+var clamXLeft = 157.745
+var clamXRight = 1773.433
+var clampYTop = 153.824
+var clampYBottom = 850.053
 
 func _physics_process(delta):
 	
@@ -20,9 +24,10 @@ func _physics_process(delta):
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
 	
-	if Input.is_action_just_pressed("ability") && canEnterPanicMode == true:
+	if Input.is_action_just_pressed("ability") && canEnterPanicMode == true && Status.alive == true:
 		print("workssss")
 		canEnterPanicMode = false
+		Status.displayCD.start()
 		speed = 800
 		runingAnimation = "Panic"
 		Status.panicModeCD.start()
@@ -55,8 +60,8 @@ func _physics_process(delta):
 	
 	
 	
-	position.x = clamp(position.x,30,get_viewport_rect().end.x -offsetForClampXRight)
-	position.y = clamp(position.y,offsetForClampYTop,get_viewport_rect().end.y + offsetForClampYBottom)
+	position.x = clamp(position.x,clamXLeft,clamXRight)
+	position.y = clamp(position.y,clampYTop,clampYBottom)
 #
 	
 	

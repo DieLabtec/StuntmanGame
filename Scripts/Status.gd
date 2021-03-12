@@ -1,6 +1,8 @@
 extends Node
 var alive = true
 
+
+
 var diedTrapDoor = false
 var diedMissile = false
 
@@ -16,14 +18,26 @@ var initialTimer = Timer.new()
 var followUpTimer = Timer.new()
 var lastTimerForBomb = Timer.new()
 
-#panic mode timers
-var panicModeCD = Timer.new()
-var panicModeDuration = Timer.new()
-
 var initialTimerWaitTimer = 1.5  #how often it rolls for the missile to spawn
 var followUpTimerWaitTimer = 1 #how much time the missile follow you around
 var lastTimerWaitTimer = 0.2
 var chance
+
+#panic mode timers
+var panicModeCD = Timer.new()
+var panicModeDuration = Timer.new()
+
+var panicModeCDtime = 6
+var panicModeDurationtime = 3
+
+var displayCD = Timer.new()
+
+#progress bar
+onready var progressBar = get_node("/root/Node2D/ColdownSpecial")
+
+
+
+
 
 func createTimer(timerName , setOneShot , setWaitTimer , onTimerOut):
 	timerName.set_one_shot(setOneShot)
@@ -44,8 +58,12 @@ func _ready():
 	initialTimer.start()
 	
 	# timers for panic mode 
-	createTimer(panicModeCD , true , 6 , "panicModeTrue")
-	createTimer(panicModeDuration , true , 3 , "panicModeDuration")
+	createTimer(panicModeCD , true , panicModeCDtime , "panicModeTrue")
+	createTimer(panicModeDuration , true , panicModeDurationtime , "panicModeDuration")
+	createTimer(displayCD , false , 1 , "displayFunc")
+	
+	
+	
 	
 	pass
 
@@ -53,18 +71,32 @@ func _ready():
 func _process(delta):
 	if(positionXplayer == true):
 		Spawn.spawnBombWithX.position = Spawn.Player.position
-	pass
+		pass
 	
-		
 	
 	pass
 
+
+# panic mode code
 func panicModeTrue():
 	Spawn.Player.canEnterPanicMode = true
 	
 func panicModeDuration():
 	Spawn.Player.speed = 600
 	Spawn.Player.runingAnimation = "Run"
+
+func displayFunc():
+		#take the value of the coldown progress bar and if it's not 0 decreasse it if it is zero refresh it 
+		if(get_node("/root/Node2D/ColdownSpecial").value >0):
+			get_node("/root/Node2D/ColdownSpecial").value = get_node("/root/Node2D/ColdownSpecial").value -1
+		else:
+			displayCD.stop()
+			get_node("/root/Node2D/ColdownSpecial").value = 5
+		pass
+
+# mine code	
+
+
 
 #A bunch of code for the falling bomb
 
