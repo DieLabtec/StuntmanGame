@@ -22,7 +22,7 @@ func _ready():
 #	pass
 
 func onTimerOut():
-	if(value > 0 && Status.alive == true):
+	if(value > 0 && Status.alive == true && get_tree().paused == false):
 		value = value - 2
 		print(value)
 	else:

@@ -13,6 +13,7 @@ var arrAddingToX = 136  #136
 var arrAddingToy = 78   #78
 var arrEndPointX = 1569.394 #1790  #1705.394
 var arrEndPointY = 744.844 #900  #744.844
+var canStart = true
 
 var alive = true
 

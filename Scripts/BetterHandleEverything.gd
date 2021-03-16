@@ -82,7 +82,7 @@ func clearItem(arrayOfTheObjectToBeCleared):
 
 func _ready():
 	randomize()
-	
+#	get_tree().paused = true
 	position = Vector2(0,0)
 	
 	player = get_node("Player")
@@ -113,6 +113,8 @@ func _process(delta):
 #			loseScreen.visible = true
 	
 	if (Input.is_action_pressed("ui_accept") && loseScreen.visible == true):
+		get_tree().paused = false
+		Spawn.Player.position = Vector2(100, 100)
 		Spawn.labelHSInstance.text = str(0)
 		Status.currentScore = 0
 		Status.alive = true
@@ -138,7 +140,9 @@ func _process(delta):
 
 	
 func _on_Button_pressed():
+	get_tree().paused = false
 	triggerDelay = true
+	Spawn.Player.position = Vector2(100, 100)
 	Spawn.labelHSInstance.text = str(0)
 	Status.currentScore = 0
 	Status.alive = true
@@ -164,5 +168,12 @@ func _on_Button_pressed():
 func loseScreenAppear():
 	loseScreen.visible = true
 	
+func loseScreenDissapear():
+	loseScreen.visible = false
 
 
+
+
+func _on_Restart_pressed():
+	get_tree().paused = true
+	pass # Replace with function body.

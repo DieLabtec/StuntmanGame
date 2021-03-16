@@ -2,7 +2,7 @@
 
 [ext_resource path="res://TIles/PNG/mapTile_022.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/DecreassingTimer.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Mine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Pause.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/BetterHandleEverything.gd" type="Script" id=5]
 
 [sub_resource type="TileSet" id=1]
@@ -24,6 +24,7 @@
 [sub_resource type="StyleBoxFlat" id=2]
 
 [node name="Node2D" type="Node2D"]
+pause_mode = 2
 position = Vector2( 3.1537, -2.45279 )
 script = ExtResource( 5 )
 
@@ -53,6 +54,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Lost"]
+visible = false
 margin_left = 836.0
 margin_top = 512.0
 margin_right = 1098.0
@@ -63,7 +65,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="CanvasLayer/Lost"]
+[node name="Restart" type="Button" parent="CanvasLayer/Lost"]
 anchor_left = 0.003
 anchor_top = 0.009
 anchor_right = 0.003
@@ -77,7 +79,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Resume" type="Button" parent="CanvasLayer/Lost"]
+visible = false
+margin_left = 837.0
+margin_top = 472.0
+margin_right = 1079.0
+margin_bottom = 517.0
+text = "Resume"
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
+pause_mode = 1
 margin_left = 787.874
 margin_top = 922.076
 margin_right = 1046.87
@@ -110,6 +121,10 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Area2D" parent="." instance=ExtResource( 3 )]
-visible = false
-[connection signal="pressed" from="CanvasLayer/Lost/Button" to="." method="_on_Button_pressed"]
+[node name="Popup" type="Popup" parent="."]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+[connection signal="pressed" from="CanvasLayer/Lost/Restart" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Lost/Resume" to="Popup" method="_on_Resume_pressed"]
