@@ -18,6 +18,7 @@ func createTimer(timerName , setOneShot , setWaitTimer , onTimerOut):
 func _ready():
 	createTimer(mineTimer , true , mineTimertime , "mineTimeout" )
 	connect("scoreIncreasedMine" , self , "increaseScore")
+#	scale = Vector2(2,2)
 	pass # Replace with function body.
 
 func increaseScore():
@@ -41,16 +42,19 @@ func increaseScore():
 func mineExplode():
 	$AnimatedSprite.offset = Vector2(0 , -258)
 	$AnimatedSprite.play("Exploading")
+
 	
 func mineCleanUp():
 	$AnimatedSprite.offset = Vector2(0,0)
 	$AnimatedSprite.play("Idle")
+	$CollisionShape2D.scale = Vector2(1,1)
 	mineCanTrigger = true
-
+	
 
 
 func _on_Area2D_body_entered(body):
 	if(mineCanTrigger == true):
+		$CollisionShape2D.scale = Vector2(2.5 ,2.5)
 		mineCanTrigger = false
 		emit_signal("scoreIncreasedMine")
 		$AnimatedSprite.play("Detonating")

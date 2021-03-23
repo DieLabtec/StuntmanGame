@@ -17,11 +17,13 @@ func _input(event):
   if(get_tree().paused == true):
 			get_tree().paused = false
 			get_node("/root/Node2D/CanvasLayer/Lost").visible = false
-			get_node("/root/Node2D/CanvasLayer/Lost/Resume").visible = false
+			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").visible = false
+			
 		else:
 			get_tree().paused = true
 			get_node("/root/Node2D/CanvasLayer/Lost").visible = true
-			get_node("/root/Node2D/CanvasLayer/Lost/Resume").visible = true
+			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").visible = true
+			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").grab_focus()
 
 func _process(delta):
 #	if Input.is_action_pressed("ui_cancel"):

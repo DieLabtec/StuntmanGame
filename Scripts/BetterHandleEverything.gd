@@ -19,6 +19,8 @@ var triggerDelay = true
 
 
 
+
+
 var coffeCupArray = []
 var howManyCoffeCups = 3
 
@@ -77,14 +79,42 @@ func clearItem(arrayOfTheObjectToBeCleared):
 			arrayOfTheObjectToBeCleared[n].queue_free()
 			pass
 
+#func refreshScene():
+#	get_tree().paused = false
+#	Spawn.Player.position = Vector2(100, 100)
+#	Spawn.labelHSInstance.text = str(0)
+#	Status.currentScore = 0
+#	Status.alive = true
+#	Status.diedMissile = false
+#	Status.diedTrapDoor = false
+#	print(Status.alive)
+#	Spawn.coffeCupOnEnter()
+##	position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
+#	for n in range(Spawn.AllCups.size()):
+#		Spawn.AllCups[n].visible = true	
+#		Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
+#		Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
+#	for n in range(Spawn.AllMine.size()):
+#		Spawn.AllMine[n].mineCleanUp()
+#		Spawn.AllMine[n].position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
+#	Status.numberOfCoffeCups = 3
+#	randomize()
+#	get_tree().reload_current_scene()
 
 	
+#func _input(event):
+#	if(event.is_action_pressed("ui_accept") && loseScreen.visible == true):
+#		refreshScene()
+#	pass
 
 func _ready():
 	randomize()
 #	get_tree().paused = true
+	if(Status.initialRestart == false):
+		Status.initialRestart = true
+		Spawn.refreshScene()
+		
 	position = Vector2(0,0)
-	
 	player = get_node("Player")
 	
 	delayBeforeEndScreen = Timer.new()
@@ -92,6 +122,7 @@ func _ready():
 	delayBeforeEndScreen.set_wait_time(2)
 	delayBeforeEndScreen.connect("timeout",self,"loseScreenAppear")
 	add_child(delayBeforeEndScreen)
+	set_process_input(true)
 	
 	
 	pass # Replace with function body.
@@ -105,75 +136,42 @@ func _process(delta):
 	
 	
 	if (Status.alive == false):
-#			get_node("CanvasLayer/Lost").visible = true
+
 			
 			if(triggerDelay == true):
 				triggerDelay = false
 				delayBeforeEndScreen.start()
-#			loseScreen.visible = true
-	
-	if (Input.is_action_pressed("ui_accept") && loseScreen.visible == true):
-		get_tree().paused = false
-		Spawn.Player.position = Vector2(100, 100)
-		Spawn.labelHSInstance.text = str(0)
-		Status.currentScore = 0
-		Status.alive = true
-		Status.diedMissile = false
-		Status.diedTrapDoor = false
-		print(Status.alive)
-		Spawn.coffeCupOnEnter()
-		position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
-		for n in range(Spawn.AllCups.size()):
-			Spawn.AllCups[n].visible = true	
-			Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
-			Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
-		for n in range(Spawn.AllMine.size()):
-			Spawn.AllMine[n].mineCleanUp()
-			Spawn.AllMine[n].position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
-		Status.numberOfCoffeCups = 3
-		randomize()
-		get_tree().reload_current_scene()
-	
-	pass
-	
-	
 
 	
+	
+	
 func _on_Button_pressed():
-	get_tree().paused = false
-	triggerDelay = true
-	Spawn.Player.position = Vector2(100, 100)
-	Spawn.labelHSInstance.text = str(0)
-	Status.currentScore = 0
-	Status.alive = true
-	Status.diedMissile = false
-	Status.diedTrapDoor = false
-	print(Status.alive)
-	Spawn.coffeCupOnEnter()
-	position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
-	for n in range(Spawn.AllCups.size()):
-		Spawn.AllCups[n].visible = true	
-		Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
-		Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
-	for n in range(Spawn.AllMine.size()):
-		Spawn.AllMine[n].mineCleanUp()
-		Spawn.AllMine[n].position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
-	Status.numberOfCoffeCups = 3
-	randomize()
-	get_tree().reload_current_scene()
+	Spawn.refreshScene()
 	
 	pass
 
 
 func loseScreenAppear():
 	loseScreen.visible = true
+	get_node("/root/Node2D/CanvasLayer/Lost/Control/Restart").grab_focus()
 	
 func loseScreenDissapear():
 	loseScreen.visible = false
 
 
-
-
 func _on_Restart_pressed():
 	get_tree().paused = true
+	pass # Replace with function body.
+
+
+func _on_Main_Menu_pressed():
+	get_tree().paused = false
+	Spawn.clearLevel1()
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+	
+	pass # Replace with function body.
+
+
+func _on_Quit_pressed():
+	get_tree().quit()
 	pass # Replace with function body.

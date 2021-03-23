@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/NewGameButton.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Quit.gd" type="Script" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.561218
+margin_top = 0.561218
+margin_right = -0.561279
+margin_bottom = 0.561279
+rect_pivot_offset = Vector2( 558.748, 269.304 )
+focus_mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="."]
+margin_left = 810.0
+margin_top = 319.439
+margin_right = 1047.0
+margin_bottom = 357.439
+rect_pivot_offset = Vector2( 117.776, 17.4511 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 810.0
+margin_top = 410.0
+margin_right = 1047.0
+margin_bottom = 448.0
+rect_pivot_offset = Vector2( 117.776, 17.4511 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="Start" to="." method="_on_Start_mouse_entered"]
+[connection signal="mouse_exited" from="Start" to="." method="_on_Start_mouse_exited"]
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_Start_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="." method="_on_Start_mouse_exited"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

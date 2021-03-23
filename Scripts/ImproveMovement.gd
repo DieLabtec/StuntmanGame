@@ -18,6 +18,22 @@ var clamXRight = 1773.433
 var clampYTop = 153.824
 var clampYBottom = 850.053
 
+#func _ready():
+#	set_process_input(true)
+#	pass
+#
+#func _input(event):
+#	if(event.is_action_pressed("ability") && canEnterPanicMode == true && Status.alive == true):
+#		print("workssss")
+#		canEnterPanicMode = false
+#		Status.displayCD.start()
+#		speed = 800
+#		runingAnimation = "Panic"
+#		Status.panicModeCD.start()
+#		Status.panicModeDuration.start()
+
+
+
 func _physics_process(delta):
 	
 	

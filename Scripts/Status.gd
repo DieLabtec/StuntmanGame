@@ -2,6 +2,7 @@ extends Node
 var alive = true
 
 
+var testDisp = 0 
 
 var diedTrapDoor = false
 var diedMissile = false
@@ -12,6 +13,8 @@ var missileOverlapsWithPlayerForFinalTimer = false
 
 var currentScore = 0
 var numberOfCoffeCups = 3 
+
+var initialRestart = false
 
 #timers for xBomb
 var initialTimer = Timer.new()
@@ -85,14 +88,14 @@ func panicModeDuration():
 	Spawn.Player.speed = 600
 	Spawn.Player.runingAnimation = "Run"
 
-func displayFunc():
-		#take the value of the coldown progress bar and if it's not 0 decreasse it if it is zero refresh it 
-		if(get_node("/root/Node2D/ColdownSpecial").value >0):
-			get_node("/root/Node2D/ColdownSpecial").value = get_node("/root/Node2D/ColdownSpecial").value -1
-		else:
-			displayCD.stop()
-			get_node("/root/Node2D/ColdownSpecial").value = 5
-		pass
+#func displayFunc():
+#		#take the value of the coldown progress bar and if it's not 0 decreasse it if it is zero refresh it 
+#		if(get_node("/root/Node2D/ColdownSpecial").value >0):
+#			get_node("/root/Node2D/ColdownSpecial").value = get_node("/root/Node2D/ColdownSpecial").value -1
+#		else:
+#			displayCD.stop()
+#			get_node("/root/Node2D/ColdownSpecial").value = 5
+#		pass
 
 # mine code	
 
