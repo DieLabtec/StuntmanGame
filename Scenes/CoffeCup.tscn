@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/CoffeCup.gd" type="Script" id=1]
 [ext_resource path="res://CoffeCup/item_cafe.01.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://CoffeCup/item_cafe.02.png" type="Texture" id=6]
 [ext_resource path="res://CoffeCup/item_cafe.06.png" type="Texture" id=7]
 [ext_resource path="res://CoffeCup/item_cafe.05.png" type="Texture" id=8]
+[ext_resource path="res://cafe_6.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.5296, 32.8914 )
@@ -34,6 +35,11 @@ position = Vector2( -2.51959, -23.2328 )
 scale = Vector2( 0.135522, 0.122614 )
 frames = SubResource( 2 )
 animation = "spining"
-frame = 3
+frame = 1
 playing = true
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( -1.05435, -33.2482 )
+texture = ExtResource( 9 )
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

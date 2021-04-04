@@ -41,3 +41,7 @@ func playX():
 func overlapsWithPlayer():
 		if(overlaps_body(Spawn.Player)):
 			Status.missileOverlapsWithPlayerForFinalTimer = true
+			
+			
+func playExplosion():
+	get_node("AudioStreamPlayer").mineExploadingSFX()

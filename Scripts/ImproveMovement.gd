@@ -1,12 +1,13 @@
 extends KinematicBody2D
 var alive = true
-
+var invincibilityTimer = Timer.new()
 
 var speed = 600
 var friction = 1 #0.5
 var acceleration = 0.2
 var velocity = Vector2.ZERO
 var runingAnimation = "Run"
+var idleAnimation = "Idle"
 var canEnterPanicMode = true
 
 var offsetForClampXRight = 30
@@ -18,10 +19,33 @@ var clamXRight = 1773.433
 var clampYTop = 153.824
 var clampYBottom = 850.053
 
-#func _ready():
+func _ready():
 #	set_process_input(true)
-#	pass
-#
+	invincibilityTimer.set_one_shot(true)
+	invincibilityTimer.set_wait_time(2)
+	invincibilityTimer.connect("timeout", self, "invincibilityRunsOut")
+	add_child(invincibilityTimer)
+	
+	
+	pass
+
+func tookDamage():
+	Status.hitPoints = Status.hitPoints - 1
+	Status.canTakeDamage = false
+	invincibilityTimer.start()
+	runingAnimation = "RuningInvincible"
+	idleAnimation = "IdleInvincible"
+	get_node("AudioStreamPlayer").playerHit()
+	
+	
+func invincibilityRunsOut():
+	Status.canTakeDamage = true
+	runingAnimation = "Run"
+	idleAnimation = "Idle"
+	pass
+	
+
+
 #func _input(event):
 #	if(event.is_action_pressed("ability") && canEnterPanicMode == true && Status.alive == true):
 #		print("workssss")
@@ -70,7 +94,7 @@ func _physics_process(delta):
 	elif Status.alive == true:
 		# If there's no input, slow down to (0, 0)
 		velocity = velocity.linear_interpolate(Vector2.ZERO, friction)
-		$AnimatedSprite.play("Idle")
+		$AnimatedSprite.play(idleAnimation)
 	if Status.alive == true:
 		velocity = move_and_slide(velocity)
 	

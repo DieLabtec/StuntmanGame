@@ -16,12 +16,14 @@ func _input(event):
  if(event.is_action_pressed("ui_cancel")):
   if(get_tree().paused == true):
 			get_tree().paused = false
+			get_node("/root/Node2D/AudioStreamPlayer").stream_paused = false #Audio note turned off
 			get_node("/root/Node2D/CanvasLayer/Lost").visible = false
 			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").visible = false
 			
 		else:
 			get_tree().paused = true
 			get_node("/root/Node2D/CanvasLayer/Lost").visible = true
+			get_node("/root/Node2D/AudioStreamPlayer").stream_paused = true #Audio note turned on
 			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").visible = true
 			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").grab_focus()
 

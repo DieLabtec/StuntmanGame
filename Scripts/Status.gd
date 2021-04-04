@@ -4,6 +4,9 @@ var alive = true
 
 var testDisp = 0 
 
+var hitPoints = 3
+var canTakeDamage = true
+
 var diedTrapDoor = false
 var diedMissile = false
 
@@ -34,6 +37,7 @@ var panicModeCDtime = 6
 var panicModeDurationtime = 3
 
 var displayCD = Timer.new()
+var bombDelay = Timer.new()
 
 #progress bar
 onready var progressBar = get_node("/root/Node2D/ColdownSpecial")
@@ -64,11 +68,14 @@ func _ready():
 	createTimer(panicModeCD , true , panicModeCDtime , "panicModeTrue")
 	createTimer(panicModeDuration , true , panicModeDurationtime , "panicModeDuration")
 	createTimer(displayCD , false , 1 , "displayFunc")
-	
+	createTimer(bombDelay , true , 0.3 , "bombDelayFunc")
 	
 	
 	
 	pass
+	
+func bombDelayFunc():
+	Spawn.spawnBombWithX.playExplosion()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -88,14 +95,14 @@ func panicModeDuration():
 	Spawn.Player.speed = 600
 	Spawn.Player.runingAnimation = "Run"
 
-#func displayFunc():
-#		#take the value of the coldown progress bar and if it's not 0 decreasse it if it is zero refresh it 
-#		if(get_node("/root/Node2D/ColdownSpecial").value >0):
-#			get_node("/root/Node2D/ColdownSpecial").value = get_node("/root/Node2D/ColdownSpecial").value -1
-#		else:
-#			displayCD.stop()
-#			get_node("/root/Node2D/ColdownSpecial").value = 5
-#		pass
+func displayFunc():
+		#take the value of the coldown progress bar and if it's not 0 decreasse it if it is zero refresh it 
+		if(get_node("/root/Node2D/ColdownSpecial").value >0):
+			get_node("/root/Node2D/ColdownSpecial").value = get_node("/root/Node2D/ColdownSpecial").value -1
+		else:
+			displayCD.stop()
+			get_node("/root/Node2D/ColdownSpecial").value = 5
+		pass
 
 # mine code	
 
@@ -122,12 +129,15 @@ func lastTimerTimeout():
 	Spawn.spawnBombWithX.bombFalling()
 	initialTimer.set_paused(false)
 	Spawn.spawnBombWithX.overlapsWithPlayer()
+	bombDelay.start()
 	
-	if(Status.missileOverlapsWithPlayerForFinalTimer == true && Status.alive == true):
+	if(Status.missileOverlapsWithPlayerForFinalTimer == true && Status.alive == true && Status.canTakeDamage == true && Status.hitPoints > 1):
+		Spawn.Player.tookDamage()
+	if(Status.missileOverlapsWithPlayerForFinalTimer == true && Status.alive == true && Status.canTakeDamage == true && Status.hitPoints == 1):
 		Status.alive = false
 		Status.diedMissile = true
+		Status.hitPoints = Status.hitPoints - 1
 		Status.missileOverlapsWithPlayerForFinalTimer = false
-#	
 	Status.missileOverlapsWithPlayerForFinalTimer = false
 		
 	pass

@@ -19,8 +19,6 @@ var triggerDelay = true
 
 
 
-
-
 var coffeCupArray = []
 var howManyCoffeCups = 3
 
@@ -78,36 +76,28 @@ func clearItem(arrayOfTheObjectToBeCleared):
 	for n in range (arrayOfTheObjectToBeCleared.size()):
 			arrayOfTheObjectToBeCleared[n].queue_free()
 			pass
-
-#func refreshScene():
-#	get_tree().paused = false
-#	Spawn.Player.position = Vector2(100, 100)
-#	Spawn.labelHSInstance.text = str(0)
-#	Status.currentScore = 0
-#	Status.alive = true
-#	Status.diedMissile = false
-#	Status.diedTrapDoor = false
-#	print(Status.alive)
-#	Spawn.coffeCupOnEnter()
-##	position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
-#	for n in range(Spawn.AllCups.size()):
-#		Spawn.AllCups[n].visible = true	
-#		Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
-#		Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
-#	for n in range(Spawn.AllMine.size()):
-#		Spawn.AllMine[n].mineCleanUp()
-#		Spawn.AllMine[n].position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
-#	Status.numberOfCoffeCups = 3
-#	randomize()
-#	get_tree().reload_current_scene()
-
 	
-#func _input(event):
-#	if(event.is_action_pressed("ui_accept") && loseScreen.visible == true):
-#		refreshScene()
-#	pass
+
+func initializeAudio():
+	var speech_player = AudioStreamPlayer.new()
+	var audio_file = "res://Random Battle.ogg"
+	if File.new().file_exists(audio_file):
+		var sfx = load(audio_file) 
+		sfx.set_loop(false)
+		speech_player.stream = sfx
+		speech_player.volume_db = 12
+		speech_player.play()
+		add_child(speech_player)
+		print("speech_player")
+		print(speech_player.stream)
+		print(speech_player.is_playing())
+		print(speech_player.bus)
+
 
 func _ready():
+#	print("is it fucked")
+#	print(0.1 + 0.2 == 0.3)
+#	initializeAudio()
 	randomize()
 #	get_tree().paused = true
 	if(Status.initialRestart == false):
@@ -130,9 +120,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):		
-#	while(Spawn.spawnTrapdoor.overlaps_area(Spawn.Player) == true):
-#		print("overlaps")
-	
 	
 	
 	if (Status.alive == false):
@@ -140,6 +127,8 @@ func _process(delta):
 			
 			if(triggerDelay == true):
 				triggerDelay = false
+				get_node("/root/Node2D/AudioStreamPlayer")._set_playing(false)
+				get_node("/root/Node2D/DeathSound")._set_playing(true)
 				delayBeforeEndScreen.start()
 
 	
@@ -147,7 +136,6 @@ func _process(delta):
 	
 func _on_Button_pressed():
 	Spawn.refreshScene()
-	
 	pass
 
 
@@ -166,6 +154,7 @@ func _on_Restart_pressed():
 
 func _on_Main_Menu_pressed():
 	get_tree().paused = false
+	Status.displayCD.stop()
 	Spawn.clearLevel1()
 	get_tree().change_scene("res://Scenes/MainMenu.tscn")
 	

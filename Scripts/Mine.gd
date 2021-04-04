@@ -42,7 +42,11 @@ func increaseScore():
 func mineExplode():
 	$AnimatedSprite.offset = Vector2(0 , -258)
 	$AnimatedSprite.play("Exploading")
-
+#	get_node("AudioStreamPlayer").set_loop(false)
+#	get_node("AudioStreamPlayer")._set_playing(true)
+	get_node("AudioStreamPlayer").mineExploadingSFX()
+	
+	
 	
 func mineCleanUp():
 	$AnimatedSprite.offset = Vector2(0,0)
@@ -65,7 +69,13 @@ func _on_Area2D_body_entered(body):
 func mineTimeout():
 	print("yesyes")
 	mineExplode()
-	if(overlaps_body(Spawn.Player)):
+	
+	if(overlaps_body(Spawn.Player) && Status.canTakeDamage == true && Status.hitPoints > 1):
+		Spawn.Player.tookDamage()
+#		Status.alive = false
+#		Status.diedMissile = true
+	if(overlaps_body(Spawn.Player) && Status.canTakeDamage == true && Status.hitPoints == 1):
 		Status.alive = false
 		Status.diedMissile = true
+		Status.hitPoints = Status.hitPoints - 1
 	pass

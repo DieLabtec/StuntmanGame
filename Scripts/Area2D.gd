@@ -54,12 +54,16 @@ func _on_Trigger_body_exited(Player):
 
 func playClosing():
 	$AnimatedSprite.play("closing")
-
  
 func _process(delta):
-	if isInArea == true && trapDoorOpened == true:
+	if isInArea == true && trapDoorOpened == true && Status.canTakeDamage == true && Status.hitPoints > 1:
+#		Status.alive = false
+#		Status.diedTrapDoor = true
+		Spawn.Player.tookDamage()
+	if isInArea == true && trapDoorOpened == true && Status.canTakeDamage == true && Status.hitPoints == 1:
 		Status.alive = false
 		Status.diedTrapDoor = true
+		Status.hitPoints = Status.hitPoints - 1
 		
 	if Input.is_action_pressed("test"):
 		Status.alive = false

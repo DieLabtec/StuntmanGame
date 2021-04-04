@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://TIles/PNG/mapTile_022.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/DecreassingTimer.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Pause.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Quit.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/BetterHandleEverything.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/HealthLabel.gd" type="Script" id=6]
+[ext_resource path="res://Fonts/Roboto-Light.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Scripts/HealthBar.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/AudioTest.gd" type="Script" id=9]
+[ext_resource path="res://GAMEOVER.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/Battle.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/fight.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Audio/Random Battle.ogg" type="AudioStream" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "mapTile_022.png 0"
@@ -23,6 +31,16 @@
 0/z_index = 0
 
 [sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.690196, 0.156863, 0.384314, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 42
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0588235, 0.890196, 0.207843, 1 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 2
@@ -136,10 +154,10 @@ __meta__ = {
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 pause_mode = 1
-margin_left = 787.874
-margin_top = 922.076
-margin_right = 1046.87
-margin_bottom = 959.076
+margin_left = 793.353
+margin_top = 1035.13
+margin_right = 1052.35
+margin_bottom = 1072.13
 custom_styles/fg = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -152,11 +170,12 @@ __meta__ = {
 }
 
 [node name="ColdownSpecial" type="ProgressBar" parent="."]
-margin_left = 787.874
-margin_top = 866.076
-margin_right = 1046.87
-margin_bottom = 903.076
+margin_left = 793.353
+margin_top = 979.132
+margin_right = 1052.35
+margin_bottom = 1016.13
 custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 max_value = 5.0
@@ -173,6 +192,46 @@ pause_mode = 2
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 3 )
+
+[node name="Health" type="Label" parent="."]
+visible = false
+margin_left = 1709.54
+margin_top = 146.655
+margin_right = 1749.54
+margin_bottom = 196.655
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+margin_left = 735.938
+margin_top = 927.22
+margin_right = 1115.94
+margin_bottom = 969.22
+custom_styles/fg = SubResource( 5 )
+max_value = 3.0
+step = 1.0
+value = 3.0
+percent_visible = false
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+script = ExtResource( 9 )
+test1 = ExtResource( 11 )
+test2 = ExtResource( 12 )
+test3 = ExtResource( 13 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = 7.477
 [connection signal="pressed" from="CanvasLayer/Lost/Control/Resume" to="Popup" method="_on_Resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/Control/Restart" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/Control/Main Menu" to="." method="_on_Main_Menu_pressed"]

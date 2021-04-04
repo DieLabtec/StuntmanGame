@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Mine.gd" type="Script" id=1]
 [ext_resource path="res://Mine/mine_activate.02.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://BombShell/Explosion/fx_mine_explosion.03.png" type="Texture" id=6]
 [ext_resource path="res://BombShell/Explosion/fx_mine_explosion.01.png" type="Texture" id=7]
 [ext_resource path="res://BombShell/Explosion/fx_mine_explosion.04.png" type="Texture" id=8]
+[ext_resource path="res://mine_3.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/ExplosionPlayer.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.0445, 14.363 )
@@ -19,15 +21,15 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "Detonating",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ), null ],
 "loop": false,
 "name": "Exploading",
 "speed": 9.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "Detonating",
+"speed": 5.0
 } ]
 
 [node name="Area2D" type="Area2D"]
@@ -43,4 +45,10 @@ position = Vector2( -0.697021, -1.65393 )
 scale = Vector2( 0.286885, 0.25 )
 frames = SubResource( 2 )
 animation = "Idle"
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource( 10 )]
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

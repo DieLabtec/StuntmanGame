@@ -53,6 +53,8 @@ var wrightIntoArray
 var currentX 
 var currentY 
 
+
+
 func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY , 
 										endPointX, endPointY, arrayToBeFilled):
 		currentX = startingX
@@ -88,7 +90,7 @@ func coffeCupOnEnter():
 	for n in range(AllMine.size()):
 		AllMine[n].mineCleanUp()
 		AllMine[n].position = copyAllPoints[rand_range(12,copyAllPoints.size())]
-	
+		
 	pass
 	print("minessize")
 	print(AllMine.size())
@@ -127,8 +129,8 @@ func generateLevel1():
 		randomize()
 	
 		
-	#	add_child(spawnMine)
-	#	spawnMine.position = Vector2(200 , 200)
+#		add_child(spawnMine)
+#		spawnMine.position = Vector2(200 , 200)
 
 		#adds bomb with x to the scene
 		add_child(spawnBombWithX)
@@ -222,9 +224,11 @@ func clearLevel1():
 	
 func refreshScene():
 	get_tree().paused = false
+	Spawn.Player.invincibilityRunsOut()
 	Spawn.Player.position = Vector2(100, 100)
 	Spawn.labelHSInstance.text = str(0)
 	Status.currentScore = 0
+	Status.hitPoints = 3
 	Status.alive = true
 	Status.diedMissile = false
 	Status.diedTrapDoor = false
