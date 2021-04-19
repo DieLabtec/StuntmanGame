@@ -8,6 +8,7 @@ export(Resource) var test1
 export(Resource) var test2
 export(Resource) var test3
 
+
 #var sfx
 #var audio1 = "res://Audio/Battle.ogg"
 #var audio2 = "res://Audio/Random Battle.ogg"
@@ -26,10 +27,10 @@ var arrAudio = [test1 , test2 , test3]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 
+
 #
 #	stream = test1
 #	play()
-	
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var audioForIsntance = rng.randi_range(0,2)

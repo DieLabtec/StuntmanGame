@@ -1,0 +1,134 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_end.03.png" type="Texture" id=1]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_end.02.png" type="Texture" id=2]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_end.01.png" type="Texture" id=3]
+[ext_resource path="res://Flamethrower/fireball/flamethrower_fireball.07.png" type="Texture" id=4]
+[ext_resource path="res://Flamethrower/fireball/flamethrower_fireball.06.png" type="Texture" id=5]
+[ext_resource path="res://Flamethrower/fireball/flamethrower_fireball.02.png" type="Texture" id=6]
+[ext_resource path="res://Flamethrower/fireball/flamethrower_fireball.04.png" type="Texture" id=7]
+[ext_resource path="res://Flamethrower/fireball/flamethrower_fireball.03.png" type="Texture" id=8]
+[ext_resource path="res://Flamethrower/fireball/flamethrower_fireball.05.png" type="Texture" id=9]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_loop.01.png" type="Texture" id=10]
+[ext_resource path="res://Flamethrower/fireball/flamethrower_fireball.01.png" type="Texture" id=11]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_loop.02.png" type="Texture" id=12]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_start.01.png" type="Texture" id=13]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_start.03.png" type="Texture" id=14]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_start.02.png" type="Texture" id=15]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_start.04.png" type="Texture" id=16]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_start.05.png" type="Texture" id=17]
+[ext_resource path="res://Flamethrower/Fire/flamethrower_flames_loop.03.png" type="Texture" id=18]
+[ext_resource path="res://Scripts/Fire.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/FireballQueeFree.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/Carpet.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/FireDamage.gd" type="Script" id=23]
+[ext_resource path="res://Scenes/flame.ogg" type="AudioStream" id=24]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Loop",
+"speed": 7.0
+}, {
+"frames": [ null, null, null, null, ExtResource( 13 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "Carpet",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 1 ), null ],
+"loop": false,
+"name": "End",
+"speed": 9.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 60.2286, 13.8622 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 4 ), null ],
+"loop": false,
+"name": "Fireball",
+"speed": 9.0
+} ]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends AnimatedSprite
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Timer_timeout():
+	queue_free()
+	pass # Replace with function body.
+"
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 37.4008
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 1, 1 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Carpet" type="AnimatedSprite" parent="."]
+position = Vector2( 80.6349, 80.6349 )
+frames = SubResource( 1 )
+animation = "Carpet"
+script = ExtResource( 22 )
+
+[node name="Area2D" type="Area2D" parent="Carpet"]
+position = Vector2( -80.6349, -80.6349 )
+script = ExtResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carpet/Area2D"]
+position = Vector2( 72.7714, 140.862 )
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Carpet"]
+
+[node name="Fireball" type="AnimatedSprite" parent="."]
+position = Vector2( 64.6349, 108.635 )
+frames = SubResource( 3 )
+animation = "Fireball"
+script = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="Fireball"]
+script = ExtResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fireball/Area2D"]
+position = Vector2( 6, -3 )
+shape = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="Fireball"]
+wait_time = 0.7
+one_shot = true
+autostart = true
+script = ExtResource( 20 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Fireball"]
+stream = ExtResource( 24 )
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Fireball/Timer" to="Fireball" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/NewGameButton.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Quit.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.156863, 0.129412, 0.129412, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -22,6 +25,7 @@ margin_top = 319.439
 margin_right = 1047.0
 margin_bottom = 357.439
 rect_pivot_offset = Vector2( 117.776, 17.4511 )
+custom_styles/normal = SubResource( 1 )
 text = "Start"
 script = ExtResource( 2 )
 __meta__ = {

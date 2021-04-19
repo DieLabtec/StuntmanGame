@@ -23,7 +23,7 @@ var firstTimeGeneration = true
 var alive = true
 
 #var spawnTrapdoor = 
-var spawnTrapdoor = trapDoor.instance()
+var spawnTrapdoor
 var spawnBombWithX = bombWithX.instance()
 var spawnMine 
 var backgroundInstance = background.instance()
@@ -37,11 +37,13 @@ var labelHSInstance = labelHighScore.instance()
 
 var positionForThisCycleTrapDoor
 var positionForThisCycleCoffeCup
+var positionForThisCycleMine
 
 
 var AllPoints = []
 var copyAllPoints = []
 
+var AllTrapdoors = []
 var AllItems = []
 var AllCups = []
 
@@ -53,6 +55,15 @@ var wrightIntoArray
 var currentX 
 var currentY 
 
+
+#difficulty increase parameters
+var difIncreaseMines = []
+var difIncreaseTrapdoor = []
+var additionalMine
+var additionalTrapDoor
+var wave1 = true
+var wave2 = true
+var wave3 = true
 
 
 func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY , 
@@ -78,6 +89,27 @@ func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY ,
 func coffeCupOnEnter():
 	Spawn.copyAllPoints = Spawn.AllPoints.duplicate()
 	print(Spawn.AllPoints.size())
+	if(Status.currentScore > 999 && wave1 == true):
+		for n in range(5):
+			AllMine.append(difIncreaseMines[-1])
+			difIncreaseMines.pop_back()
+			wave1 = false
+		print("difficulty increasse mine has been added")
+		
+	if(Status.currentScore > 2999 && wave2 == true):
+		for n in range(5):
+			AllMine.append(difIncreaseMines[-1])
+			difIncreaseMines.pop_back()
+			wave2 = false
+		print("difficulty increasse mine has been added #2")
+		
+	if(Status.currentScore > 7499 && wave3 == true):
+		for n in range(5):
+			AllMine.append(difIncreaseMines[-1])
+			difIncreaseMines.pop_back()
+			wave3 = false
+		print("difficulty increasse mine has been added #2")
+		
 	for n in range(Spawn.AllItems.size()):
 		Spawn.positionForThisCycleTrapDoor = rand_range(12,Spawn.copyAllPoints.size())
 		Spawn.AllItems[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleTrapDoor]
@@ -87,15 +119,19 @@ func coffeCupOnEnter():
 		Spawn.AllItems[n].timer.start()
 		Spawn.AllItems[n].trapDoorOpened = false
 		Spawn.AllItems[n].playClosing()
-	for n in range(AllMine.size()):
-		AllMine[n].mineCleanUp()
-		AllMine[n].position = copyAllPoints[rand_range(12,copyAllPoints.size())]
 		
+	for n in range(AllMine.size()):
+		positionForThisCycleMine = rand_range(12,copyAllPoints.size())
+		AllMine[n].mineCleanUp()
+		AllMine[n].position = copyAllPoints[positionForThisCycleMine]
+		copyAllPoints.remove(positionForThisCycleMine)
+	
+	
 	pass
-	print("minessize")
-	print(AllMine.size())
-	print("trapdoorsize")
-	print(AllItems.size())
+#	print("minessize")
+#	print(AllMine.size())
+#	print("trapdoorsize")
+#	print(AllItems.size())
 
 func spawnTrapDoor():
 		spawnTrapdoor = trapDoor.instance()
@@ -108,11 +144,6 @@ func spawnTrapDoor():
 func spawnEnemy(enemy):
 	add_child(enemy)
 	move_child(enemy, 0)
-	
-	
-	
-	
-	
 	
 pass
 
@@ -131,7 +162,12 @@ func generateLevel1():
 		
 #		add_child(spawnMine)
 #		spawnMine.position = Vector2(200 , 200)
-
+		for n in range(15):
+			difficultyIncreaseMine()
+			print(difIncreaseMines.size())
+		pass
+		
+		
 		#adds bomb with x to the scene
 		add_child(spawnBombWithX)
 		spawnBombWithX.position = Vector2(-200 , -200)
@@ -144,7 +180,7 @@ func generateLevel1():
 		
 		#adds player to the scene
 		add_child(Player)
-		move_child(Player , 6)
+		move_child(Player , 1000)
 		
 		#add background
 		add_child(backgroundInstance)
@@ -167,7 +203,7 @@ func generateLevel1():
 		pass
 		
 		#creating trapdoors
-		for n in range(20):
+		for n in range(30):
 			spawnTrapDoor()
 			positionForThisCycleTrapDoor = rand_range(12,copyAllPoints.size())
 			AllItems[n].position = copyAllPoints[positionForThisCycleTrapDoor]
@@ -177,11 +213,13 @@ func generateLevel1():
 		pass
 		
 		for n in range(10):
+			positionForThisCycleMine = rand_range(12,copyAllPoints.size())
 			spawnMine = mine.instance()
 			add_child(spawnMine)
 			move_child(spawnMine , 1)
 			AllMine.append(spawnMine)
-			spawnMine.position = copyAllPoints[rand_range(12,copyAllPoints.size())]
+			spawnMine.position = copyAllPoints[positionForThisCycleMine]
+			copyAllPoints.remove(positionForThisCycleMine)
 			
 			
 #		Tool to display all positions numbers in the all points array
@@ -223,6 +261,9 @@ func clearLevel1():
 			AllMine.pop_back()
 	
 func refreshScene():
+	print("wave1")
+	print(wave1)
+	print(Status.currentScore)
 	get_tree().paused = false
 	Spawn.Player.invincibilityRunsOut()
 	Spawn.Player.position = Vector2(100, 100)
@@ -239,19 +280,54 @@ func refreshScene():
 		Spawn.AllCups[n].visible = true	
 		Spawn.positionForThisCycleCoffeCup = rand_range(12,Spawn.copyAllPoints.size())
 		Spawn.AllCups[n].position = Spawn.copyAllPoints[Spawn.positionForThisCycleCoffeCup]
+	
+	while(AllMine.size() > 10):
+		AllMine[-1].queue_free()
+		AllMine.pop_back()
+		difficultyIncreaseMine()
+		wave1 = true
+		wave2 = true
+		wave3 = true
+	
+
+		
+	
 	for n in range(Spawn.AllMine.size()):
 		Spawn.AllMine[n].mineCleanUp()
 		Spawn.AllMine[n].position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
 	Status.numberOfCoffeCups = 3
 	randomize()
 	get_tree().reload_current_scene()
+	
+	
+	
+func difficultyIncreaseMine():
+	additionalMine = mine.instance()
+	add_child(additionalMine)
+	additionalMine.position = Vector2(1900, 100)
+	move_child(additionalMine , 1)
+	difIncreaseMines.append(additionalMine)
+	print("additional mine has been added")
 
+func difficultyIncreaseTrapDoor():
+	additionalTrapDoor = trapDoor.instance()
+	add_child(additionalTrapDoor)
+	additionalTrapDoor.position = Vector2(1900, 100)
+	move_child(additionalTrapDoor , 1)
+	difIncreaseTrapdoor.append(additionalTrapDoor)
+	print("additional trapdoor has been added")
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	generateLevel1()
+	print("allMines")
+	print(AllMine)
+	print("additionalTrapdoors")
+	print(difIncreaseTrapdoor)
+	print("allitems")
+	print(AllItems.size())
 	pass
 
-
-func _process(delta):
-	
-	pass
+#
+#func _process(delta):
+#	pass
