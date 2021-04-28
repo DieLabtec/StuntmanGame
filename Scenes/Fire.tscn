@@ -43,7 +43,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 60.2286, 13.8622 )
+extents = Vector2( 40.9617, 11.3536 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -64,6 +64,10 @@ script/source = "extends AnimatedSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if(get_tree().paused == false):
+		get_node(\"AudioStreamPlayer\").play()
+		
+		
 	pass # Replace with function body.
 
 
@@ -78,7 +82,7 @@ func _on_Timer_timeout():
 "
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 37.4008
+radius = 31.8048
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 1, 1 )
@@ -98,7 +102,7 @@ position = Vector2( -80.6349, -80.6349 )
 script = ExtResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carpet/Area2D"]
-position = Vector2( 72.7714, 140.862 )
+position = Vector2( 78.1228, 145.619 )
 shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Carpet"]
@@ -124,7 +128,7 @@ script = ExtResource( 20 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Fireball"]
 stream = ExtResource( 24 )
-autoplay = true
+bus = "SFX"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

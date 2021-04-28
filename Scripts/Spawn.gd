@@ -1,5 +1,6 @@
 extends Node
 var trapDoor = preload("res://Scenes/TrapDoor.tscn")
+var flameThrower = preload("res://Scenes/FlameThrower.tscn")
 var coffeCup = preload("res://Scenes/CoffeCup.tscn")
 var player = preload("res://Scenes/Player.tscn")
 var labelHighScore = preload("res://Scenes/HighScoreLabel.tscn")
@@ -31,6 +32,7 @@ var testLabelInstance = testLabel.instance()
 
 var spawnCup
 
+var flameThrowerInstance = flameThrower.instance()
 
 var Player = player.instance()
 var labelHSInstance = labelHighScore.instance()
@@ -172,6 +174,8 @@ func generateLevel1():
 		add_child(spawnBombWithX)
 		spawnBombWithX.position = Vector2(-200 , -200)
 		
+		add_child(flameThrowerInstance)
+		flameThrowerInstance.position = Vector2(67.26 , 490.178)
 		
 		#adds label with current score to the scene
 		add_child(labelHSInstance)

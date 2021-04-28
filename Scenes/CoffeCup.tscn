@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/CoffeCup.gd" type="Script" id=1]
 [ext_resource path="res://CoffeCup/item_cafe.01.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://CoffeCup/item_cafe.06.png" type="Texture" id=7]
 [ext_resource path="res://CoffeCup/item_cafe.05.png" type="Texture" id=8]
 [ext_resource path="res://cafe_6.png" type="Texture" id=9]
+[ext_resource path="res://esm_pickup.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.5296, 32.8914 )
@@ -23,7 +24,6 @@ animations = [ {
 
 [node name="Area2D" type="Area2D"]
 position = Vector2( 274.312, 134.947 )
-scale = Vector2( 1.2, 1.2 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -31,8 +31,7 @@ position = Vector2( -3.77979, -21.4187 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -2.51959, -23.2328 )
-scale = Vector2( 0.135522, 0.122614 )
+position = Vector2( -3.56944, -22.1829 )
 frames = SubResource( 2 )
 animation = "spining"
 frame = 1
@@ -42,4 +41,7 @@ playing = true
 visible = false
 position = Vector2( -1.05435, -33.2482 )
 texture = ExtResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]

@@ -9,7 +9,6 @@ signal timeIncrease
 func _ready():
 	connect("scoreIncreased" , self , "increaseScore")
 	connect("timeIncrease" , self , "upTime")
-#	labelHS = 
 	pass # Replace with function body.
 
 
@@ -29,6 +28,7 @@ func _on_Area2D_body_entered(body):
 	if(visible == true):
 		Status.numberOfCoffeCups -= 1
 		visible = false
+		get_node("AudioStreamPlayer").play()
 		
 		if(Status.numberOfCoffeCups == 0):
 			Spawn.coffeCupOnEnter()
