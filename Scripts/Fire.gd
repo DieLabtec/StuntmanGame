@@ -45,6 +45,7 @@ func flameTimerTimeout():
 
 func flameTimerTimeout2():
 	get_node("Carpet").play("End")
+	get_node("Carpet/Area2D/CollisionShape2D").queue_free()
 	flameTimer3.start()
 
 func flameTimerTimeout3():

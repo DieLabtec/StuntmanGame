@@ -18,14 +18,14 @@ func _input(event):
 			get_tree().paused = false
 			get_node("/root/Node2D/AudioStreamPlayer").stream_paused = false #Audio note turned off
 			get_node("/root/Node2D/CanvasLayer/Lost").visible = false
-			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").visible = false
+			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume2").visible = false
 			
 		else:
 			get_tree().paused = true
 			get_node("/root/Node2D/CanvasLayer/Lost").visible = true
 			get_node("/root/Node2D/AudioStreamPlayer").stream_paused = true #Audio note turned on
-			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").visible = true
-			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume").grab_focus()
+			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume2").visible = true
+			get_node("/root/Node2D/CanvasLayer/Lost/Control/Resume2").grab_focus()
 
 func _process(delta):
 #	if Input.is_action_pressed("ui_cancel"):
@@ -41,6 +41,12 @@ func _process(delta):
 
 
 func _on_Resume_pressed():
+	get_tree().paused = false
+	get_node("/root/Node2D/CanvasLayer/Lost").visible = false
+	pass # Replace with function body.
+
+
+func _on_Resume2_pressed():
 	get_tree().paused = false
 	get_node("/root/Node2D/CanvasLayer/Lost").visible = false
 	pass # Replace with function body.

@@ -16,9 +16,9 @@ func _ready():
 	
  
 func _process(delta):
-	if(has_focus() == true):
-		rect_scale = Vector2(1.2 ,1.2)
-	else:
-		rect_scale = Vector2(1 , 1)
+#	if(has_focus() == true):
+#		rect_scale = Vector2(1.2 ,1.2)
+#	else:
+#		rect_scale = Vector2(1 , 1)
 	
 	pass

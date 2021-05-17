@@ -244,9 +244,13 @@ func clearLevel1():
 		for n in range(AllMine.size()):
 			remove_child(AllMine[n])
 		
+		for n in range(difIncreaseMines.size()):
+			remove_child(difIncreaseMines[n])
+		
 		for n in range(AllItems.size()):
 			remove_child(AllItems[n])
 			
+		remove_child(flameThrowerInstance)	
 		remove_child(labelHSInstance)
 		remove_child(backgroundInstance)
 		remove_child(Player)

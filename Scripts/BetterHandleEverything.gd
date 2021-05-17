@@ -98,6 +98,11 @@ func _ready():
 #	print("is it fucked")
 #	print(0.1 + 0.2 == 0.3)
 #	initializeAudio()
+	AudioBusLayout
+#	print("Audio buss")
+#	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+#	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"),-90)
+#	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
 	randomize()
 #	get_tree().paused = true
 	if(Status.initialRestart == false):
@@ -141,7 +146,7 @@ func _on_Button_pressed():
 
 func loseScreenAppear():
 	loseScreen.visible = true
-	get_node("/root/Node2D/CanvasLayer/Lost/Control/Restart").grab_focus()
+	get_node("/root/Node2D/CanvasLayer/Lost/Control/Restart2").grab_focus()
 	
 func loseScreenDissapear():
 	loseScreen.visible = false
@@ -162,5 +167,23 @@ func _on_Main_Menu_pressed():
 
 
 func _on_Quit_pressed():
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_Restart2_pressed():
+	Spawn.refreshScene()
+	pass # Replace with function body.
+
+
+func _on_MainMenu_pressed():
+	get_tree().paused = false
+	Status.displayCD.stop()
+	Spawn.clearLevel1()
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+	pass # Replace with function body.
+
+
+func _on_Quit2_pressed():
 	get_tree().quit()
 	pass # Replace with function body.

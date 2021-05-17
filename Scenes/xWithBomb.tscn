@@ -33,7 +33,7 @@ animations = [ {
 "name": "x",
 "speed": 5.0
 }, {
-"frames": [ null, ExtResource( 2 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), null ],
+"frames": [ ExtResource( 3 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 2 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), null ],
 "loop": false,
 "name": "bombFalling",
 "speed": 40.0
@@ -59,7 +59,5 @@ position = Vector2( 0.682556, -112.9 )
 scale = Vector2( 0.276145, 0.210268 )
 frames = SubResource( 2 )
 animation = "bombFalling"
-frame = 16
-playing = true
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource( 8 )]

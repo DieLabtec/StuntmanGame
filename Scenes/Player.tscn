@@ -49,24 +49,24 @@ radius = 6.31762
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "Panic",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
 "name": "Idle",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 5 ), null ],
+"frames": [ ExtResource( 5 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
-"name": "IdleInvincible",
+"name": "Panic",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 2 ), null ],
 "loop": false,
 "name": "Falling",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 5 ), null ],
+"loop": true,
+"name": "IdleInvincible",
 "speed": 10.0
 }, {
 "frames": [ null, ExtResource( 10 ), null, ExtResource( 3 ), null, ExtResource( 6 ), null, ExtResource( 4 ), null, ExtResource( 7 ), null, ExtResource( 8 ), null ],
@@ -97,7 +97,7 @@ shape = SubResource( 1 )
 position = Vector2( 1.72118, -58.9038 )
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 2 )
-animation = "IdleInvincible"
+animation = "Run"
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -105,3 +105,4 @@ position = Vector2( 3.36737, -107.756 )
 texture = ExtResource( 42 )
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource( 43 )]
+bus = "SFX"

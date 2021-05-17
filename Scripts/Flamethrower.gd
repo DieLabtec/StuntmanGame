@@ -63,7 +63,7 @@ func delayBeforeFiringTimeOut():
 	readyTimer.start()
 	
 func delayBeforeFireballsTimeOut():
-	if(numberOfFireballs < 4 ):
+	if(numberOfFireballs < 10 ):
 		
 		initalizedFlame = flame.instance()
 		add_child(initalizedFlame)
