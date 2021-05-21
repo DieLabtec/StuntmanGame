@@ -23,6 +23,7 @@ run/main_scene="res://Scenes/MainMenu.tscn"
 Status="*res://Scripts/Status.gd"
 Spawn="*res://Scripts/Spawn.gd"
 HighScore="*res://Scripts/HighScore.gd"
+AudioManagment="*res://Scripts/AudioManagment.gd"
 
 [display]
 

@@ -3,6 +3,8 @@ var flameTimer = Timer.new()
 var flameTimer2 = Timer.new()
 var flameTimer3 = Timer.new()
 
+var rng = RandomNumberGenerator.new()
+var carpetSpawnRng
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -29,7 +31,11 @@ func _ready():
 	flameTimer3.set_wait_time(0.3)
 	flameTimer3.connect("timeout", self, "flameTimerTimeout3")
 	
+	rng.randomize()
+	carpetSpawnRng = rng.randi_range(0,1)
 	
+	if(carpetSpawnRng == 1):
+		get_node("Carpet").queue_free()
 	
 	
 	pass # Replace with function body.
@@ -40,8 +46,9 @@ func _ready():
 #	pass
 
 func flameTimerTimeout():
-	get_node("Carpet").play("Loop")
-	flameTimer2.start()
+	if(carpetSpawnRng == 0):
+		get_node("Carpet").play("Loop")
+		flameTimer2.start()
 
 func flameTimerTimeout2():
 	get_node("Carpet").play("End")

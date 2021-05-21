@@ -36,6 +36,11 @@ animations = [ {
 "name": "Firing",
 "speed": 8.0
 }, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "Ready",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 16 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 3 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "Finished",
@@ -45,11 +50,6 @@ animations = [ {
 "loop": false,
 "name": "Activate",
 "speed": 12.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": false,
-"name": "Ready",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,

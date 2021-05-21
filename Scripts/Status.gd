@@ -121,7 +121,7 @@ func initialTimerTimeout():
 		
 func followUpTimerTimerout():
 	positionXplayer = false
-#	Spawn.spawnBombWithX.crossHair()
+	Spawn.spawnBombWithX.crossHair()
 	lastTimerForBomb.start()
 	
 

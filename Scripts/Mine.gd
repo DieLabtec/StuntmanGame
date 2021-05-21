@@ -40,7 +40,7 @@ func increaseScore():
 
 #is called by rocket
 func mineExplode():
-	$AnimatedSprite.offset = Vector2(0 , -258)
+	$AnimatedSprite.offset = Vector2(0 , -50)
 	$AnimatedSprite.play("Exploading")
 #	get_node("AudioStreamPlayer").set_loop(false)
 #	get_node("AudioStreamPlayer")._set_playing(true)

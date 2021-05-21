@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/AudioSlider.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/AudioMenuScript.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.33484
+margin_top = 0.667419
+margin_right = 1.33484
+margin_bottom = 0.66748
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX" parent="." instance=ExtResource( 1 )]
+min_value = -50.0
+value = -20.0
+percent_visible = false
+
+[node name="IncreasseSFX" type="Button" parent="SFX"]
+margin_left = 349.649
+margin_top = 13.9977
+margin_right = 394.649
+margin_bottom = 42.9977
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DecreasseSFX" type="Button" parent="SFX"]
+margin_left = -59.3371
+margin_top = 13.3326
+margin_right = -16.3371
+margin_bottom = 37.3326
+
+[node name="Music" parent="." instance=ExtResource( 1 )]
+margin_left = 570.937
+margin_top = 323.674
+margin_right = 888.937
+margin_bottom = 382.674
+min_value = -50.0
+value = -20.0
+percent_visible = false
+
+[node name="IncreasseMusic" type="Button" parent="Music"]
+margin_left = 346.649
+margin_top = 17.6719
+margin_right = 387.649
+margin_bottom = 44.6719
+
+[node name="DecreasseMusic" type="Button" parent="Music"]
+margin_left = -66.3439
+margin_top = 15.0023
+margin_right = -25.3439
+margin_bottom = 39.0023
+
+[node name="Submit" type="Button" parent="."]
+margin_left = 926.643
+margin_top = 472.67
+margin_right = 1026.64
+margin_bottom = 525.67
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="."]
+margin_left = 322.0
+margin_top = 471.0
+margin_right = 418.0
+margin_bottom = 518.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="SFX/IncreasseSFX" to="." method="_on_IncreasseSFX_button_down"]
+[connection signal="pressed" from="SFX/IncreasseSFX" to="." method="_on_IncreasseSFX_pressed"]
+[connection signal="toggled" from="SFX/IncreasseSFX" to="." method="_on_IncreasseSFX_toggled"]
+[connection signal="button_down" from="SFX/DecreasseSFX" to="." method="_on_DecreasseSFX_button_down"]
+[connection signal="button_down" from="Music/IncreasseMusic" to="." method="_on_IncreasseMusic_button_down"]
+[connection signal="button_down" from="Music/DecreasseMusic" to="." method="_on_DecreasseMusic_button_down"]
+[connection signal="button_down" from="Submit" to="." method="_on_Submit_button_down"]
+[connection signal="pressed" from="Submit" to="." method="_on_Submit_pressed"]
+[connection signal="button_down" from="Exit" to="." method="_on_Exit_button_down"]

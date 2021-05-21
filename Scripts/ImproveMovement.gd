@@ -16,8 +16,8 @@ var offsetForClampYTop = 120
 
 var clamXLeft = 157.745
 var clamXRight = 1773.433
-var clampYTop = 153.824
-var clampYBottom = 850.053
+var clampYTop = 163.824
+var clampYBottom = 850.053  #850
 
 func _ready():
 #	set_process_input(true)

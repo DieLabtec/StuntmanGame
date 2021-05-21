@@ -29,10 +29,18 @@ script = ExtResource( 2 )
 
 [node name="Quit2" parent="." instance=ExtResource( 4 )]
 margin_left = 744.346
-margin_top = 392.138
+margin_top = 452.0
 margin_right = 1032.35
-margin_bottom = 438.138
+margin_bottom = 498.0
 text = "Quit"
 script = ExtResource( 3 )
+
+[node name="Settings" parent="." instance=ExtResource( 4 )]
+margin_left = 744.909
+margin_top = 392.0
+margin_right = 1032.91
+margin_bottom = 438.0
+text = "Sound"
 [connection signal="pressed" from="Start2" to="." method="_on_Start2_pressed"]
 [connection signal="pressed" from="Quit2" to="." method="_on_Quit2_pressed"]
+[connection signal="button_down" from="Settings" to="." method="_on_Settings_button_down"]

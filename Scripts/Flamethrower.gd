@@ -22,6 +22,8 @@ var wait2FramesTime = 0.4
 
 var numberOfFireballs = 0
 var offsetPosition = Vector2(0 , 0)
+
+
 	
 
 
@@ -39,6 +41,7 @@ func _ready():
 	createTimer(readyTimer2,true , readyTimerTime2, "waitASec2")
 	createTimer(wait2Frames,true , wait2FramesTime , "wait2FramesTimeout")
 	initialTimer.start()
+	
 	
 	pass # Replace with function body.
 
@@ -63,7 +66,7 @@ func delayBeforeFiringTimeOut():
 	readyTimer.start()
 	
 func delayBeforeFireballsTimeOut():
-	if(numberOfFireballs < 10 ):
+	if(numberOfFireballs < 13 ):
 		
 		initalizedFlame = flame.instance()
 		add_child(initalizedFlame)

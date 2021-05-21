@@ -7,7 +7,7 @@ var decreasingTimer = Timer.new()
 
 func _ready():
 	decreasingTimer.set_one_shot(false)
-	decreasingTimer.set_wait_time(0.35)
+	decreasingTimer.set_wait_time(0.4)
 	decreasingTimer.connect("timeout", self, "onTimerOut")
 	add_child(decreasingTimer)
 	decreasingTimer.start()

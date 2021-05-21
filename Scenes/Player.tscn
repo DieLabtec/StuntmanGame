@@ -59,6 +59,11 @@ animations = [ {
 "name": "Panic",
 "speed": 10.0
 }, {
+"frames": [ null, ExtResource( 10 ), null, ExtResource( 3 ), null, ExtResource( 6 ), null, ExtResource( 4 ), null, ExtResource( 7 ), null, ExtResource( 8 ), null ],
+"loop": true,
+"name": "RuningInvincible",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 2 ), null ],
 "loop": false,
 "name": "Falling",
@@ -69,19 +74,14 @@ animations = [ {
 "name": "IdleInvincible",
 "speed": 10.0
 }, {
-"frames": [ null, ExtResource( 10 ), null, ExtResource( 3 ), null, ExtResource( 6 ), null, ExtResource( 4 ), null, ExtResource( 7 ), null, ExtResource( 8 ), null ],
-"loop": true,
-"name": "RuningInvincible",
+"frames": [ ExtResource( 28 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "Burning",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 23 ) ],
-"loop": false,
-"name": "Burning",
 "speed": 10.0
 } ]
 

@@ -34,7 +34,6 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var audioForIsntance = rng.randi_range(0,2)
-	print(audioForIsntance)
 	
 	if(audioForIsntance == 0):
 		stream = test1
