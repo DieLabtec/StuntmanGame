@@ -25,7 +25,8 @@ func onTimerOut():
 	if(value > 0 && Status.alive == true && get_tree().paused == false):
 		value = value - 2
 		print(value)
-	else:
+	elif(Status.diedFire == false && Status.diedMissile == false && Status.diedTrapDoor == false):
 		Status.alive = false
+		Status.diedByTimeout = true
 		
 

@@ -50,3 +50,8 @@ func _on_Quit2_pressed():
 func _on_Settings_button_down():
 	get_tree().change_scene("res://Scenes/AudioMenu.tscn")
 	pass # Replace with function body.
+
+
+func _on_Credits_pressed():
+	get_tree().change_scene("res://Scenes/Credits.tscn")
+	pass # Replace with function body.

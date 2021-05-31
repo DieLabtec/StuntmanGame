@@ -21,4 +21,5 @@ func _process(delta):
 		Status.alive = false
 		Status.diedFire = true
 		Status.hitPoints = Status.hitPoints - 1
+		get_node("/root/Node2D/End").playEnd()
 	pass

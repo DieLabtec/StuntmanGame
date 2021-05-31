@@ -64,9 +64,11 @@ func _process(delta):
 		Status.alive = false
 		Status.diedTrapDoor = true
 		Status.hitPoints = Status.hitPoints - 1
+		get_node("/root/Node2D/End").playEnd()
 		
 	if Input.is_action_pressed("test"):
 		Status.alive = false
+		get_node("/root/Node2D/End").playEnd()
 		
 	pass
 

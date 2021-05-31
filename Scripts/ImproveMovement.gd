@@ -135,11 +135,18 @@ func _physics_process(delta):
 #
 	
 	
-	if(Status.alive == false && Status.diedTrapDoor):
-		$AnimatedSprite.play("Falling")
+	if(Status.alive == false && Status.diedTrapDoor == true):
+		$AnimatedSprite.play("Electrecuted")
 		
-	if(Status.alive == false && Status.diedMissile):
+		
+	if(Status.alive == false && Status.diedMissile == true):
 		$AnimatedSprite.play("DiedExplosion")
 		
-	if(Status.alive == false && Status.diedFire):
+		
+	if(Status.alive == false && Status.diedFire == true):
 		$AnimatedSprite.play("Burning")
+		
+
+	if(Status.alive == false && Status.diedByTimeout == true):
+		$AnimatedSprite.play("Timeout")
+		

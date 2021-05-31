@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/director_end_whatareyoudoing.wav-9c084384e50309b2f237fc7d8cb32f5d.sample"
+
+[deps]
+
+source_file="res://DirectorVoiceLines/End/director_end_whatareyoudoing.wav"
+dest_files=[ "res://.import/director_end_whatareyoudoing.wav-9c084384e50309b2f237fc7d8cb32f5d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/AudioSlider.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/AudioMenuScript.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/TenFatGuys.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -16,6 +20,10 @@ __meta__ = {
 }
 
 [node name="SFX" parent="." instance=ExtResource( 1 )]
+margin_left = 774.023
+margin_top = 346.185
+margin_right = 1092.02
+margin_bottom = 405.185
 min_value = -50.0
 value = -20.0
 percent_visible = false
@@ -25,6 +33,7 @@ margin_left = 349.649
 margin_top = 13.9977
 margin_right = 394.649
 margin_bottom = 42.9977
+text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,12 +43,27 @@ margin_left = -59.3371
 margin_top = 13.3326
 margin_right = -16.3371
 margin_bottom = 37.3326
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="SFX"]
+margin_left = 135.822
+margin_top = 22.7889
+margin_right = 197.822
+margin_bottom = 43.7889
+custom_fonts/font = SubResource( 1 )
+text = "Music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Music" parent="." instance=ExtResource( 1 )]
-margin_left = 570.937
-margin_top = 323.674
-margin_right = 888.937
-margin_bottom = 382.674
+margin_left = 781.96
+margin_top = 462.859
+margin_right = 1099.96
+margin_bottom = 521.859
 min_value = -50.0
 value = -20.0
 percent_visible = false
@@ -49,30 +73,62 @@ margin_left = 346.649
 margin_top = 17.6719
 margin_right = 387.649
 margin_bottom = 44.6719
+text = "+"
 
 [node name="DecreasseMusic" type="Button" parent="Music"]
 margin_left = -66.3439
 margin_top = 15.0023
 margin_right = -25.3439
 margin_bottom = 39.0023
+text = "-"
+
+[node name="SFX" type="Label" parent="Music"]
+margin_left = 128.944
+margin_top = 20.5369
+margin_right = 190.944
+margin_bottom = 41.5369
+custom_fonts/font = SubResource( 1 )
+text = "SFX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Submit" type="Button" parent="."]
-margin_left = 926.643
-margin_top = 472.67
-margin_right = 1026.64
-margin_bottom = 525.67
+margin_left = 1137.67
+margin_top = 611.855
+margin_right = 1237.66
+margin_bottom = 664.855
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Submit" type="Label" parent="Submit"]
+margin_left = 19.6755
+margin_top = 19.774
+margin_right = 81.6755
+margin_bottom = 34.774
+custom_fonts/font = SubResource( 1 )
+text = "Submit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Exit" type="Button" parent="."]
-margin_left = 322.0
-margin_top = 471.0
-margin_right = 418.0
-margin_bottom = 518.0
+margin_left = 533.023
+margin_top = 610.185
+margin_right = 629.023
+margin_bottom = 657.185
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Exit" type="Label" parent="Exit"]
+margin_left = 27.0472
+margin_top = 17.2063
+margin_right = 63.0472
+margin_bottom = 32.2063
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
 [connection signal="button_down" from="SFX/IncreasseSFX" to="." method="_on_IncreasseSFX_button_down"]
 [connection signal="pressed" from="SFX/IncreasseSFX" to="." method="_on_IncreasseSFX_pressed"]
 [connection signal="toggled" from="SFX/IncreasseSFX" to="." method="_on_IncreasseSFX_toggled"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://TIles/PNG/mapTile_022.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/DecreassingTimer.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Scripts/AudioTest.gd" type="Script" id=9]
 [ext_resource path="res://GAMEOVER.wav" type="AudioStream" id=10]
 [ext_resource path="res://Audio/Battle.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Audio/fight.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Fonts/fight_looped.wav" type="AudioStream" id=12]
 [ext_resource path="res://Audio/Random Battle.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=14]
 [ext_resource path="res://DirectorVoiceLines/Beggin/director_start_again2.wav" type="AudioStream" id=15]
@@ -24,12 +24,14 @@
 [ext_resource path="res://Scripts/ColdownSpeciaScriptl.gd" type="Script" id=22]
 [ext_resource path="res://DirectorVoiceLines/Beggin/director_start_takeone2.wav" type="AudioStream" id=23]
 [ext_resource path="res://DirectorVoiceLines/Beggin/director_start_worthit.wav" type="AudioStream" id=24]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_hesfine2.wav" type="AudioStream" id=25]
 [ext_resource path="res://Scripts/AnnouncerBeggin.gd" type="Script" id=26]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_lookinggood.wav" type="AudioStream" id=27]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_looksfine.wav" type="AudioStream" id=28]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_more.wav" type="AudioStream" id=29]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_morecoffee.wav" type="AudioStream" id=30]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_verygood.wav" type="AudioStream" id=31]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_hesfine.wav" type="AudioStream" id=32]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_lookinggood2.wav" type="AudioStream" id=33]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_allday.wav" type="AudioStream" id=34]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_likecoffee.wav" type="AudioStream" id=35]
@@ -39,6 +41,14 @@
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_goon.wav" type="AudioStream" id=39]
 [ext_resource path="res://DirectorVoiceLines/Progression/director_progress_inshape.wav" type="AudioStream" id=40]
 [ext_resource path="res://Scripts/ProgressionAnnouncer.gd" type="Script" id=41]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_cut.wav" type="AudioStream" id=42]
+[ext_resource path="res://Scripts/End.gd" type="Script" id=43]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_youhearme.wav" type="AudioStream" id=44]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_whatareyoudoing.wav" type="AudioStream" id=45]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_whathappened.wav" type="AudioStream" id=46]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_thatsawrap.wav" type="AudioStream" id=47]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_werdone.wav" type="AudioStream" id=48]
+[ext_resource path="res://DirectorVoiceLines/End/director_end_iguess.wav" type="AudioStream" id=49]
 
 [sub_resource type="TileSet" id=1]
 0/name = "mapTile_022.png 0"
@@ -229,8 +239,9 @@ custom_colors/font_color = Color( 0.941176, 0.513726, 0.113725, 1 )
 text = "0"
 
 [node name="AnnouncerBeggin" type="AudioStreamPlayer" parent="."]
-volume_db = -28.732
+volume_db = 7.888
 autoplay = true
+bus = "SFX"
 script = ExtResource( 26 )
 voiceLine1 = ExtResource( 19 )
 voiceLine2 = ExtResource( 15 )
@@ -242,7 +253,8 @@ voiceLine8 = ExtResource( 18 )
 voiceLine9 = ExtResource( 24 )
 
 [node name="Progression" type="AudioStreamPlayer" parent="."]
-volume_db = -28.563
+volume_db = 9.521
+bus = "SFX"
 script = ExtResource( 41 )
 voiceLine1 = ExtResource( 36 )
 voiceLine2 = ExtResource( 34 )
@@ -257,6 +269,20 @@ voiceLine11 = ExtResource( 28 )
 voiceLine12 = ExtResource( 29 )
 voiceLine13 = ExtResource( 30 )
 voiceLine14 = ExtResource( 31 )
+
+[node name="End" type="AudioStreamPlayer" parent="."]
+volume_db = 7.323
+bus = "SFX"
+script = ExtResource( 43 )
+voiceLine1 = ExtResource( 42 )
+voiceLine2 = ExtResource( 25 )
+voiceLine3 = ExtResource( 32 )
+voiceLine4 = ExtResource( 49 )
+voiceLine5 = ExtResource( 47 )
+voiceLine6 = ExtResource( 48 )
+voiceLine7 = ExtResource( 45 )
+voiceLine8 = ExtResource( 46 )
+voiceLine9 = ExtResource( 44 )
 [connection signal="pressed" from="CanvasLayer/Lost/Control/Resume2" to="Popup" method="_on_Resume2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/Control/Restart2" to="." method="_on_Restart2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/Control/MainMenu" to="." method="_on_MainMenu_pressed"]

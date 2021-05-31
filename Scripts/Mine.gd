@@ -78,6 +78,7 @@ func mineTimeout():
 		Status.alive = false
 		Status.diedMissile = true
 		Status.hitPoints = Status.hitPoints - 1
+		get_node("/root/Node2D/End").playEnd()
 	pass
 func minePlayIdle():
 	$AnimatedSprite.play("Idle")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/director_end_cut.wav-7c8d89d6f92a5ed5d2dc2172fb3eb760.sample"
+
+[deps]
+
+source_file="res://DirectorVoiceLines/End/director_end_cut.wav"
+dest_files=[ "res://.import/director_end_cut.wav-7c8d89d6f92a5ed5d2dc2172fb3eb760.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

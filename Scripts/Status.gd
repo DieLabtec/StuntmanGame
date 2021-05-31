@@ -10,6 +10,7 @@ var canTakeDamage = true
 var diedTrapDoor = false
 var diedMissile = false
 var diedFire = false
+var diedByTimeout = false
 
 var positionXplayer = false
 var missileOverlapsWithPlayerForFinalTimer = false
@@ -141,6 +142,7 @@ func lastTimerTimeout():
 		Status.diedMissile = true
 		Status.hitPoints = Status.hitPoints - 1
 		Status.missileOverlapsWithPlayerForFinalTimer = false
+		get_node("/root/Node2D/End").playEnd()
 	Status.missileOverlapsWithPlayerForFinalTimer = false
 		
 	pass

@@ -1,0 +1,319 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/TenFatGuys.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0117647, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.667419
+margin_top = -2.0
+margin_right = 0.66748
+margin_bottom = -2.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="."]
+margin_left = 896.392
+margin_top = 337.207
+margin_right = 998.392
+margin_bottom = 366.207
+custom_fonts/font = SubResource( 1 )
+text = "Music"
+align = 1
+percent_visible = -0.2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vile Nou" type="Label" parent="Music"]
+margin_left = -78.2708
+margin_top = 51.7568
+margin_right = 30.7292
+margin_bottom = 66.7568
+text = "Ville Nousiainen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VileNou" type="Button" parent="Music/Vile Nou"]
+margin_left = 151.432
+margin_top = -6.94604
+margin_right = 322.432
+margin_bottom = 22.054
+text = "Link to there Soundcloud"
+
+[node name="Controllerhead" type="Label" parent="Music"]
+margin_left = -75.8923
+margin_top = 96.3521
+margin_right = 33.1077
+margin_bottom = 111.352
+text = "controllerhead"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="controllerhead" type="Button" parent="Music/Controllerhead"]
+margin_left = 147.865
+margin_top = -8.13525
+margin_right = 331.865
+margin_bottom = 20.8647
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3xBlast" type="Label" parent="Music"]
+margin_left = -76.4869
+margin_top = 142.731
+margin_right = 32.5131
+margin_bottom = 157.731
+text = "3xBlast"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3xBlast" type="Button" parent="Music/3xBlast"]
+margin_left = 147.27
+margin_top = -7.54065
+margin_right = 331.27
+margin_bottom = 21.4594
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Art" type="Label" parent="."]
+margin_left = 868.969
+margin_top = 124.229
+margin_right = 1131.97
+margin_bottom = 162.229
+custom_fonts/font = SubResource( 1 )
+text = "Art - Announcer"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuzzerZero" type="Label" parent="Art"]
+margin_left = -34.484
+margin_top = 57.5198
+margin_right = 74.516
+margin_bottom = 72.5198
+text = "BuzzerZero"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuzzerZero" type="Button" parent="Art/BuzzerZero"]
+margin_left = 147.27
+margin_top = -7.54065
+margin_right = 331.27
+margin_bottom = 21.4594
+text = "Link to there Twitter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Programming" type="Label" parent="."]
+margin_left = 872.776
+margin_top = 222.37
+margin_right = 1107.78
+margin_bottom = 260.37
+custom_fonts/font = SubResource( 1 )
+text = "Programming"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DieLabtec" type="Label" parent="Programming"]
+margin_left = 54.118
+margin_top = 53.2248
+margin_right = 163.118
+margin_bottom = 70.2248
+text = "DieLabtec"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DieLabtec" type="Button" parent="Programming/DieLabtec"]
+visible = false
+margin_left = 147.27
+margin_top = -7.54065
+margin_right = 331.27
+margin_bottom = 21.4594
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Programming2" type="Label" parent="."]
+margin_left = 787.776
+margin_top = 819.37
+margin_right = 1192.78
+margin_bottom = 857.37
+custom_fonts/font = SubResource( 1 )
+text = "Talking Ducky & Testing"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stoyko" type="Label" parent="Programming2"]
+margin_left = 153.867
+margin_top = 54.4324
+margin_right = 262.867
+margin_bottom = 71.4324
+text = "Stoyko"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music2" type="Label" parent="."]
+margin_left = 896.392
+margin_top = 551.207
+margin_right = 998.392
+margin_bottom = 580.207
+custom_fonts/font = SubResource( 1 )
+text = "SFX"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3xBlast2" type="Label" parent="Music2"]
+margin_left = -77.0567
+margin_top = 51.4229
+margin_right = 31.9433
+margin_bottom = 66.4229
+text = "3Xblast"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TheMightyglider" type="Button" parent="Music2/3xBlast2"]
+margin_left = 147.27
+margin_top = -7.54065
+margin_right = 331.27
+margin_bottom = 21.4594
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blender Foundation" type="Label" parent="Music2"]
+margin_left = -82.8116
+margin_top = 105.543
+margin_right = 38.1884
+margin_bottom = 120.543
+text = "BlenderFoundation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blender Foundation" type="Button" parent="Music2/Blender Foundation"]
+margin_left = 147.27
+margin_top = -7.54065
+margin_right = 331.27
+margin_bottom = 21.4594
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blender Foundation2" type="Label" parent="Music2"]
+margin_left = -82.8116
+margin_top = 105.543
+margin_right = 38.1884
+margin_bottom = 120.543
+text = "BlenderFoundation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blender Foundation" type="Button" parent="Music2/Blender Foundation2"]
+margin_left = 147.27
+margin_top = -7.54065
+margin_right = 331.27
+margin_bottom = 21.4594
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NenadSimic" type="Label" parent="Music2"]
+margin_left = -81.4769
+margin_top = 154.932
+margin_right = 39.5231
+margin_bottom = 169.932
+text = "NenadSimic"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NenadSimic" type="Button" parent="Music2/NenadSimic"]
+margin_left = 147.937
+margin_top = -7.54065
+margin_right = 331.937
+margin_bottom = 21.4594
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blacklodgegames" type="Label" parent="Music2"]
+margin_left = -82.1442
+margin_top = 203.653
+margin_right = 38.8558
+margin_bottom = 218.653
+text = "blacklodgegames"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blacklodgegames" type="Button" parent="Music2/blacklodgegames"]
+margin_left = 147.937
+margin_top = -7.54065
+margin_right = 331.937
+margin_bottom = 21.4594
+text = "Link to there Opengameart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 141.0
+margin_top = 890.0
+margin_right = 400.0
+margin_bottom = 976.0
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Music/Vile Nou/VileNou" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Music/Controllerhead/controllerhead" to="." method="_on_controllerhead_pressed"]
+[connection signal="pressed" from="Music/3xBlast/3xBlast" to="." method="_on_3xBlast_pressed"]
+[connection signal="pressed" from="Art/BuzzerZero/BuzzerZero" to="." method="_on_BuzzerZero_pressed"]
+[connection signal="pressed" from="Programming/DieLabtec/DieLabtec" to="." method="_on_BuzzerZero_pressed"]
+[connection signal="pressed" from="Music2/3xBlast2/TheMightyglider" to="." method="_on_TheMightyglider_pressed"]
+[connection signal="pressed" from="Music2/Blender Foundation/Blender Foundation" to="." method="_on_Blender_Foundation_pressed"]
+[connection signal="pressed" from="Music2/Blender Foundation2/Blender Foundation" to="." method="_on_Blender_Foundation_pressed"]
+[connection signal="pressed" from="Music2/NenadSimic/NenadSimic" to="." method="_on_NenadSimic_pressed"]
+[connection signal="pressed" from="Music2/blacklodgegames/blacklodgegames" to="." method="_on_NenadSimic_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]

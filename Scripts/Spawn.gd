@@ -301,6 +301,7 @@ func refreshScene():
 	Status.diedMissile = false
 	Status.diedTrapDoor = false
 	Status.diedFire = false
+	Status.diedByTimeout = false
 	print(Status.alive)
 	Spawn.coffeCupOnEnter()
 	
