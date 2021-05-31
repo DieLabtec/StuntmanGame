@@ -79,3 +79,5 @@ func mineTimeout():
 		Status.diedMissile = true
 		Status.hitPoints = Status.hitPoints - 1
 	pass
+func minePlayIdle():
+	$AnimatedSprite.play("Idle")

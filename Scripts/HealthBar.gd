@@ -14,4 +14,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	value = Status.hitPoints
+	rect_position = Spawn.Player.position - Vector2(48 , -20)
 	pass

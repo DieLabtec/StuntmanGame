@@ -19,6 +19,6 @@ func _process(delta):
 #		Status.diedMissile = true
 	if(overlaps_body(Spawn.Player) && Status.canTakeDamage == true && Status.hitPoints == 1):
 		Status.alive = false
-		Status.diedMissile = true
+		Status.diedFire = true
 		Status.hitPoints = Status.hitPoints - 1
 	pass

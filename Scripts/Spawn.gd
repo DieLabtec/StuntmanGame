@@ -67,6 +67,7 @@ var wave1 = true
 var wave2 = true
 var wave3 = true
 
+var newPlayerPosition 
 
 func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY , 
 										endPointX, endPointY, arrayToBeFilled):
@@ -91,6 +92,13 @@ func initializeTrapsSpawnPoints(startingX , startingY ,  addingToX , addingToY ,
 func coffeCupOnEnter():
 	Spawn.copyAllPoints = Spawn.AllPoints.duplicate()
 	print(Spawn.AllPoints.size())
+	
+	if(Status.statusProgression < 3):
+		Status.statusProgression = Status.statusProgression + 1
+	elif Status.statusProgression == 3:
+		Status.statusProgression = 0 
+		get_node("/root/Node2D/Progression").playProgression()
+		
 	if(Status.currentScore > 999 && wave1 == true):
 		for n in range(5):
 			AllMine.append(difIncreaseMines[-1])
@@ -125,8 +133,12 @@ func coffeCupOnEnter():
 	for n in range(AllMine.size()):
 		positionForThisCycleMine = rand_range(12,copyAllPoints.size())
 		AllMine[n].mineCleanUp()
+		AllMine[n].minePlayIdle()
 		AllMine[n].position = copyAllPoints[positionForThisCycleMine]
 		copyAllPoints.remove(positionForThisCycleMine)
+	
+	
+		
 	
 	
 	pass
@@ -138,23 +150,18 @@ func coffeCupOnEnter():
 func spawnTrapDoor():
 		spawnTrapdoor = trapDoor.instance()
 		add_child(spawnTrapdoor)
-		move_child(spawnTrapdoor , 1)
+#		move_child(spawnTrapdoor ,1)
+		print("trapdoorIndex")
+		print(spawnTrapdoor.get_index())
 		AllItems.append(spawnTrapdoor)
 		
 		pass
-
-func spawnEnemy(enemy):
-	add_child(enemy)
-	move_child(enemy, 0)
-	
-pass
-
 
 
 func spawncup():
 	spawnCup = coffeCup.instance()
 	add_child(spawnCup)
-	move_child(spawnCup , 1)
+#	move_child(spawnCup , 2)
 	AllCups.append(spawnCup)
 	pass
 
@@ -171,20 +178,16 @@ func generateLevel1():
 		
 		
 		#adds bomb with x to the scene
-		add_child(spawnBombWithX)
-		spawnBombWithX.position = Vector2(-200 , -200)
+
 		
-		add_child(flameThrowerInstance)
-		flameThrowerInstance.position = Vector2(67.26 , 490.178)
 		
 		#adds label with current score to the scene
-		add_child(labelHSInstance)
+#		add_child(labelHSInstance)
+		
 		
 		print(labelHSInstance.text + "stuffs")
 		
-		#adds player to the scene
-		add_child(Player)
-		move_child(Player , 1000)
+	
 		
 		#add background
 		add_child(backgroundInstance)
@@ -197,14 +200,7 @@ func generateLevel1():
 		copyAllPoints = AllPoints.duplicate()
 		
 		#creating teacups
-		for n in range(3):
-			spawncup()
-			positionForThisCycleCoffeCup = rand_range(13,copyAllPoints.size())
-			AllCups[n].position = copyAllPoints[positionForThisCycleCoffeCup]
-	##		print(copyAllPoints.size())
-	#		copyAllPoints.remove(positionForThisCycleCoffeCup)
-	#		print(copyAllPoints.size())
-		pass
+		
 		
 		#creating trapdoors
 		for n in range(30):
@@ -220,7 +216,9 @@ func generateLevel1():
 			positionForThisCycleMine = rand_range(12,copyAllPoints.size())
 			spawnMine = mine.instance()
 			add_child(spawnMine)
-			move_child(spawnMine , 1)
+#			move_child(spawnMine , 3000)
+			print("mineIndex")
+			print(spawnMine.get_index())
 			AllMine.append(spawnMine)
 			spawnMine.position = copyAllPoints[positionForThisCycleMine]
 			copyAllPoints.remove(positionForThisCycleMine)
@@ -236,6 +234,26 @@ func generateLevel1():
 		
 		
 			pass 
+			
+		for n in range(3):
+			spawncup()
+			positionForThisCycleCoffeCup = rand_range(13,copyAllPoints.size())
+			AllCups[n].position = copyAllPoints[positionForThisCycleCoffeCup]
+	##		print(copyAllPoints.size())
+	#		copyAllPoints.remove(positionForThisCycleCoffeCup)
+	#		print(copyAllPoints.size())
+		pass
+
+			#adds player to the scene
+		add_child(flameThrowerInstance)
+		flameThrowerInstance.position = Vector2(67.26 , 490.178)
+		
+		add_child(spawnBombWithX)
+		spawnBombWithX.position = Vector2(-200 , -200)
+		
+		add_child(Player)
+		newPlayerPosition = get_child_count() 
+		move_child(Spawn.Player, newPlayerPosition)
 
 func clearLevel1():
 		for n in range(AllCups.size()):
@@ -273,6 +291,7 @@ func refreshScene():
 	print(wave1)
 	print(Status.currentScore)
 	get_tree().paused = false
+	Status.statusProgression = 0
 	Spawn.Player.invincibilityRunsOut()
 	Spawn.Player.position = Vector2(100, 100)
 	Spawn.labelHSInstance.text = str(0)
@@ -281,8 +300,10 @@ func refreshScene():
 	Status.alive = true
 	Status.diedMissile = false
 	Status.diedTrapDoor = false
+	Status.diedFire = false
 	print(Status.alive)
 	Spawn.coffeCupOnEnter()
+	
 #	position = Spawn.copyAllPoints[rand_range(12,Spawn.copyAllPoints.size())]
 	for n in range(Spawn.AllCups.size()):
 		Spawn.AllCups[n].visible = true	
@@ -306,14 +327,15 @@ func refreshScene():
 	Status.numberOfCoffeCups = 3
 	randomize()
 	get_tree().reload_current_scene()
-	
+	newPlayerPosition = get_child_count()
+	move_child(Spawn.Player, newPlayerPosition)
 	
 	
 func difficultyIncreaseMine():
 	additionalMine = mine.instance()
 	add_child(additionalMine)
-	additionalMine.position = Vector2(1900, 100)
-	move_child(additionalMine , 1)
+	additionalMine.position = Vector2(1900, -100)
+	move_child(additionalMine , 131)
 	difIncreaseMines.append(additionalMine)
 	print("additional mine has been added")
 
@@ -334,8 +356,15 @@ func _ready():
 	print(difIncreaseTrapdoor)
 	print("allitems")
 	print(AllItems.size())
+
 	pass
 
 #
-#func _process(delta):
-#	pass
+func _process(delta):
+#	print(get_child_count())
+#	print("playerPosition")
+#
+#
+#	print(Spawn.Player.get_index())
+	
+	pass

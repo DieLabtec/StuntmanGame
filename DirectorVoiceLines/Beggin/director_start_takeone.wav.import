@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/director_start_takeone.wav-a0766fd8ba8ade4b8e80a212e708b054.sample"
+
+[deps]
+
+source_file="res://DirectorVoiceLines/Beggin/director_start_takeone.wav"
+dest_files=[ "res://.import/director_start_takeone.wav-a0766fd8ba8ade4b8e80a212e708b054.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

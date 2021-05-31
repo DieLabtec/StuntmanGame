@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/director_progress_continue.wav-38b5328e2fe0ffeea34950ec639f1511.sample"
+
+[deps]
+
+source_file="res://DirectorVoiceLines/Progression/director_progress_continue.wav"
+dest_files=[ "res://.import/director_progress_continue.wav-38b5328e2fe0ffeea34950ec639f1511.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

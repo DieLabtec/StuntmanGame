@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://TIles/PNG/mapTile_022.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/DecreassingTimer.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Pause.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/HighScoreLabel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/BetterHandleEverything.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/HealthLabel.gd" type="Script" id=6]
 [ext_resource path="res://Fonts/Roboto-Light.ttf" type="DynamicFontData" id=7]
@@ -13,8 +14,31 @@
 [ext_resource path="res://Audio/fight.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Audio/Random Battle.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Button.tscn" type="PackedScene" id=14]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_again2.wav" type="AudioStream" id=15]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_ucandothis.wav" type="AudioStream" id=16]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_shine.wav" type="AudioStream" id=17]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_whoisthis.wav" type="AudioStream" id=18]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_again.wav" type="AudioStream" id=19]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_takeone.wav" type="AudioStream" id=20]
 [ext_resource path="res://Scenes/ColdownSpecial.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scripts/ColdownSpeciaScriptl.gd" type="Script" id=22]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_takeone2.wav" type="AudioStream" id=23]
+[ext_resource path="res://DirectorVoiceLines/Beggin/director_start_worthit.wav" type="AudioStream" id=24]
+[ext_resource path="res://Scripts/AnnouncerBeggin.gd" type="Script" id=26]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_lookinggood.wav" type="AudioStream" id=27]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_looksfine.wav" type="AudioStream" id=28]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_more.wav" type="AudioStream" id=29]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_morecoffee.wav" type="AudioStream" id=30]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_verygood.wav" type="AudioStream" id=31]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_lookinggood2.wav" type="AudioStream" id=33]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_allday.wav" type="AudioStream" id=34]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_likecoffee.wav" type="AudioStream" id=35]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_allday2.wav" type="AudioStream" id=36]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_alright.wav" type="AudioStream" id=37]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_goon2.wav" type="AudioStream" id=38]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_goon.wav" type="AudioStream" id=39]
+[ext_resource path="res://DirectorVoiceLines/Progression/director_progress_inshape.wav" type="AudioStream" id=40]
+[ext_resource path="res://Scripts/ProgressionAnnouncer.gd" type="Script" id=41]
 
 [sub_resource type="TileSet" id=1]
 0/name = "mapTile_022.png 0"
@@ -141,6 +165,7 @@ __meta__ = {
 }
 
 [node name="ColdownSpecial" parent="." instance=ExtResource( 21 )]
+visible = false
 margin_left = 874.0
 margin_top = 740.0
 margin_right = 1007.0
@@ -168,10 +193,10 @@ __meta__ = {
 }
 
 [node name="ProgressBar2" type="ProgressBar" parent="."]
-margin_left = 735.938
-margin_top = 927.22
-margin_right = 1115.94
-margin_bottom = 969.22
+margin_left = 874.0
+margin_top = 769.0
+margin_right = 1007.0
+margin_bottom = 792.0
 custom_styles/fg = SubResource( 4 )
 max_value = 3.0
 step = 1.0
@@ -194,6 +219,44 @@ test3 = ExtResource( 13 )
 stream = ExtResource( 10 )
 volume_db = 7.477
 bus = "Music"
+
+[node name="Label" parent="." instance=ExtResource( 4 )]
+margin_left = 816.595
+margin_top = 1015.02
+margin_right = 1021.59
+margin_bottom = 1090.02
+custom_colors/font_color = Color( 0.941176, 0.513726, 0.113725, 1 )
+text = "0"
+
+[node name="AnnouncerBeggin" type="AudioStreamPlayer" parent="."]
+volume_db = -28.732
+autoplay = true
+script = ExtResource( 26 )
+voiceLine1 = ExtResource( 19 )
+voiceLine2 = ExtResource( 15 )
+voiceLine3 = ExtResource( 17 )
+voiceLine5 = ExtResource( 20 )
+voiceLine6 = ExtResource( 23 )
+voiceLine7 = ExtResource( 16 )
+voiceLine8 = ExtResource( 18 )
+voiceLine9 = ExtResource( 24 )
+
+[node name="Progression" type="AudioStreamPlayer" parent="."]
+volume_db = -28.563
+script = ExtResource( 41 )
+voiceLine1 = ExtResource( 36 )
+voiceLine2 = ExtResource( 34 )
+voiceLine3 = ExtResource( 37 )
+voiceLine5 = ExtResource( 38 )
+voiceLine6 = ExtResource( 39 )
+voiceLine7 = ExtResource( 40 )
+voiceLine8 = ExtResource( 35 )
+voiceLine9 = ExtResource( 33 )
+voiceLine10 = ExtResource( 27 )
+voiceLine11 = ExtResource( 28 )
+voiceLine12 = ExtResource( 29 )
+voiceLine13 = ExtResource( 30 )
+voiceLine14 = ExtResource( 31 )
 [connection signal="pressed" from="CanvasLayer/Lost/Control/Resume2" to="Popup" method="_on_Resume2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/Control/Restart2" to="." method="_on_Restart2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Lost/Control/MainMenu" to="." method="_on_MainMenu_pressed"]

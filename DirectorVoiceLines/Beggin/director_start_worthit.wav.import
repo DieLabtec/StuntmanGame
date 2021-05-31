@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/director_start_worthit.wav-28a8314cf90e5778fcbed6ec7d431053.sample"
+
+[deps]
+
+source_file="res://DirectorVoiceLines/Beggin/director_start_worthit.wav"
+dest_files=[ "res://.import/director_start_worthit.wav-28a8314cf90e5778fcbed6ec7d431053.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

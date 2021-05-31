@@ -1,103 +1,109 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scripts/ImproveMovement.gd" type="Script" id=1]
-[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.04.png" type="Texture" id=2]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.02.png" type="Texture" id=3]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.04.png" type="Texture" id=4]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_idle.png" type="Texture" id=5]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.03.png" type="Texture" id=6]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.05.png" type="Texture" id=7]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.06.png" type="Texture" id=8]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.00.png" type="Texture" id=9]
-[ext_resource path="res://PlayerAnimations/RuningAnimation/intern_ph_walk_left.01.png" type="Texture" id=10]
-[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.03.png" type="Texture" id=11]
-[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.01.png" type="Texture" id=12]
-[ext_resource path="res://PlayerAnimations/Falling/intern_ph_death_fall.02.png" type="Texture" id=13]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.01.png" type="Texture" id=14]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.02.png" type="Texture" id=15]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.03.png" type="Texture" id=16]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.10.png" type="Texture" id=17]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.15.png" type="Texture" id=18]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.05.png" type="Texture" id=19]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.17.png" type="Texture" id=20]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.18.png" type="Texture" id=21]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.09.png" type="Texture" id=22]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.19.png" type="Texture" id=23]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.16.png" type="Texture" id=24]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.11.png" type="Texture" id=25]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.04.png" type="Texture" id=26]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.06.png" type="Texture" id=27]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.00.png" type="Texture" id=28]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.07.png" type="Texture" id=29]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.08.png" type="Texture" id=30]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.12.png" type="Texture" id=31]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.13.png" type="Texture" id=32]
-[ext_resource path="res://PlayerAnimations/Burning/intern_ph_death_burn.14.png" type="Texture" id=33]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.01.png" type="Texture" id=34]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.02.png" type="Texture" id=35]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.03.png" type="Texture" id=36]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.05.png" type="Texture" id=37]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.04.png" type="Texture" id=38]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.06.png" type="Texture" id=39]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.07.png" type="Texture" id=40]
-[ext_resource path="res://PlayerAnimations/Panic/intern_ph_panic.08.png" type="Texture" id=41]
+[ext_resource path="res://IntenrFinal/DiedExplosion/intern_death_explosion.03.png" type="Texture" id=2]
+[ext_resource path="res://IntenrFinal/DiedExplosion/intern_death_explosion.02.png" type="Texture" id=3]
+[ext_resource path="res://IntenrFinal/DiedExplosion/intern_death_explosion.01.png" type="Texture" id=4]
+[ext_resource path="res://IntenrFinal/hitStun/intern_hitstun.02.png" type="Texture" id=5]
+[ext_resource path="res://IntenrFinal/hitStun/intern_hitstun.03.png" type="Texture" id=6]
+[ext_resource path="res://IntenrFinal/hitStun/intern_hitstun.01.png" type="Texture" id=7]
+[ext_resource path="res://IntenrFinal/Run/intern_move_05.png" type="Texture" id=8]
+[ext_resource path="res://IntenrFinal/Panic/intern_panic.03.png" type="Texture" id=9]
+[ext_resource path="res://IntenrFinal/Run/intern_move_06.png" type="Texture" id=10]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.05.png" type="Texture" id=14]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.03.png" type="Texture" id=15]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.06.png" type="Texture" id=16]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.07.png" type="Texture" id=17]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.01.png" type="Texture" id=18]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.02.png" type="Texture" id=19]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.04.png" type="Texture" id=20]
+[ext_resource path="res://IntenrFinal/Run/intern_move_01.png" type="Texture" id=21]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.08.png" type="Texture" id=22]
+[ext_resource path="res://IntenrFinal/Run/intern_move_04.png" type="Texture" id=23]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.10.png" type="Texture" id=25]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.09.png" type="Texture" id=26]
+[ext_resource path="res://IntenrFinal/Run/intern_move_02.png" type="Texture" id=27]
+[ext_resource path="res://IntenrFinal/Panic/intern_panic.04.png" type="Texture" id=28]
+[ext_resource path="res://IntenrFinal/Panic/intern_panic.01.png" type="Texture" id=30]
+[ext_resource path="res://IntenrFinal/Panic/intern_panic.02.png" type="Texture" id=31]
+[ext_resource path="res://IntenrFinal/FireDeath/intern_death_fire.11.png" type="Texture" id=32]
+[ext_resource path="res://IntenrFinal/Run/intern_move_03.png" type="Texture" id=33]
 [ext_resource path="res://intern_3.png" type="Texture" id=42]
 [ext_resource path="res://Scenes/AudioStreamPlayer.tscn" type="PackedScene" id=43]
+[ext_resource path="res://IntenrFinal/Idle/intern_idle.02.png" type="Texture" id=44]
+[ext_resource path="res://IntenrFinal/Idle/intern_idle.01.png" type="Texture" id=45]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.31762
+radius = 10.4504
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "Idle",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
+"frames": [ ExtResource( 45 ), ExtResource( 44 ) ],
 "loop": true,
-"name": "Panic",
-"speed": 10.0
+"name": "Idle",
+"speed": 5.0
 }, {
-"frames": [ null, ExtResource( 10 ), null, ExtResource( 3 ), null, ExtResource( 6 ), null, ExtResource( 4 ), null, ExtResource( 7 ), null, ExtResource( 8 ), null ],
+"frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "hitStun",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "DiedExplosion",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), null, ExtResource( 27 ), null, ExtResource( 33 ), null, ExtResource( 23 ), null, ExtResource( 8 ), null, ExtResource( 10 ), null ],
 "loop": true,
 "name": "RuningInvincible",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 2 ), null ],
+"frames": [ ExtResource( 30 ), null, ExtResource( 31 ), null, ExtResource( 9 ), null, ExtResource( 28 ), null ],
+"loop": true,
+"name": "PanicInvincible",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 32 ) ],
+"loop": false,
+"name": "Burning",
+"speed": 11.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 9 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "Panic",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 27 ), ExtResource( 33 ), ExtResource( 23 ), ExtResource( 8 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [  ],
 "loop": false,
 "name": "Falling",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 5 ), null ],
+"frames": [ ExtResource( 45 ), null, ExtResource( 44 ), null ],
 "loop": true,
 "name": "IdleInvincible",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 27 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 23 ) ],
-"loop": false,
-"name": "Burning",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Run",
 "speed": 10.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 36.6824, 123.187 )
+position = Vector2( 54.3601, 151.471 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 5.77843 ]
+}
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2( 0.442254, -0.121365 )
+position = Vector2( 0.0713449, -8.64789 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1.72118, -58.9038 )
-scale = Vector2( 0.25, 0.25 )
+position = Vector2( 2.04604, -97.7566 )
 frames = SubResource( 2 )
-animation = "Run"
+animation = "Panic"
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false

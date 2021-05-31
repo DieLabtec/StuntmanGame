@@ -9,6 +9,7 @@ var canTakeDamage = true
 
 var diedTrapDoor = false
 var diedMissile = false
+var diedFire = false
 
 var positionXplayer = false
 var missileOverlapsWithPlayerForFinalTimer = false
@@ -28,6 +29,8 @@ var initialTimerWaitTimer = 1.5  #how often it rolls for the missile to spawn
 var followUpTimerWaitTimer = 1 #how much time the missile follow you around
 var lastTimerWaitTimer = 0.2
 var chance
+
+var statusProgression = 0
 
 #panic mode timers
 var panicModeCD = Timer.new()
@@ -68,7 +71,7 @@ func _ready():
 	createTimer(panicModeCD , true , panicModeCDtime , "panicModeTrue")
 	createTimer(panicModeDuration , true , panicModeDurationtime , "panicModeDuration")
 	createTimer(displayCD , false , 1 , "displayFunc")
-	createTimer(bombDelay , true , 0.3 , "bombDelayFunc")
+	createTimer(bombDelay , true , 0.14 , "bombDelayFunc")
 	
 	
 	

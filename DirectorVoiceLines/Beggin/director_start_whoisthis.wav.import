@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/director_start_whoisthis.wav-19b6c9278cad9036a9658dc72ebab4f5.sample"
+
+[deps]
+
+source_file="res://DirectorVoiceLines/Beggin/director_start_whoisthis.wav"
+dest_files=[ "res://.import/director_start_whoisthis.wav-19b6c9278cad9036a9658dc72ebab4f5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

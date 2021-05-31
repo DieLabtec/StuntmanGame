@@ -30,10 +30,12 @@ func _process(delta):
 	pass
 
 func crossHair():
+	$bomb.position = Vector2(-0.23 , -2.939)
 	$bomb.play("crosshair")
 	
 func bombFalling():
 	$bomb.play("bombFalling")
+	$bomb.position = Vector2(-5 , -310)
 	
 func playX():
 	$bomb.play("x")

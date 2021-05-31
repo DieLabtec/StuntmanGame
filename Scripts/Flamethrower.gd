@@ -3,7 +3,7 @@ var flame = preload("res://Scenes/Fire.tscn")
 var initalizedFlame 
 
 var initialTimer = Timer.new()
-var initialTimerTime = 7
+var initialTimerTime = 15
 
 var delayBeforeFiring = Timer.new()
 var delayBeforeFiringTime = 1.4

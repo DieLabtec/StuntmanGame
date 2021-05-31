@@ -1,6 +1,7 @@
 extends KinematicBody2D
 var alive = true
 var invincibilityTimer = Timer.new()
+var hitStunTimer = Timer.new()
 
 var speed = 600
 var friction = 1 #0.5
@@ -9,13 +10,14 @@ var velocity = Vector2.ZERO
 var runingAnimation = "Run"
 var idleAnimation = "Idle"
 var canEnterPanicMode = true
+var hitStun = false
 
 var offsetForClampXRight = 30
 var offsetForClampYBottom = 0
 var offsetForClampYTop = 120
 
 var clamXLeft = 157.745
-var clamXRight = 1773.433
+var clamXRight = 1753.433 #1773
 var clampYTop = 163.824
 var clampYBottom = 850.053  #850
 
@@ -26,6 +28,12 @@ func _ready():
 	invincibilityTimer.connect("timeout", self, "invincibilityRunsOut")
 	add_child(invincibilityTimer)
 	
+	hitStunTimer.set_one_shot(true)
+	hitStunTimer.set_wait_time(0.3)
+	hitStunTimer.connect("timeout", self, "hitStunTimeout")
+	add_child(hitStunTimer)
+	
+	
 	
 	pass
 
@@ -33,8 +41,10 @@ func tookDamage():
 	Status.hitPoints = Status.hitPoints - 1
 	Status.canTakeDamage = false
 	invincibilityTimer.start()
-	runingAnimation = "RuningInvincible"
-	idleAnimation = "IdleInvincible"
+	hitStun = true
+	runingAnimation = "hitStun"
+	idleAnimation = "hitStun"
+	hitStunTimer.start()
 	get_node("AudioStreamPlayer").playerHit()
 	
 	
@@ -44,7 +54,10 @@ func invincibilityRunsOut():
 	idleAnimation = "Idle"
 	pass
 	
-
+func hitStunTimeout():
+	hitStun = false
+	idleAnimation = "IdleInvincible"
+	
 
 #func _input(event):
 #	if(event.is_action_pressed("ability") && canEnterPanicMode == true && Status.alive == true):
@@ -61,17 +74,34 @@ func invincibilityRunsOut():
 func _physics_process(delta):
 	
 	
+	
 	var input_velocity = Vector2.ZERO
 	# Check input for "desired" velocity
 	
-	if Input.is_action_just_pressed("ability") && canEnterPanicMode == true && Status.alive == true:
-		print("workssss")
-		canEnterPanicMode = false
-		Status.displayCD.start()
+#	if Input.is_action_just_pressed("ability") && canEnterPanicMode == true && Status.alive == true:
+#		print("workssss")
+#		canEnterPanicMode = false
+#		Status.displayCD.start()
+#		speed = 800
+#		runingAnimation = "Panic"
+#		Status.panicModeCD.start()
+#		Status.panicModeDuration.start()
+
+#	if Input.is_action_pressed("ability") && Status.alive == true && Status.canTakeDamage == false:
+#		speed = 800
+#		runingAnimation = "PanicInvincible"
+	if Input.is_action_pressed("ability") && Status.alive == true && Status.canTakeDamage == true && hitStun == false:
 		speed = 800
 		runingAnimation = "Panic"
-		Status.panicModeCD.start()
-		Status.panicModeDuration.start()
+	elif Input.is_action_pressed("ability") && Status.alive == true && Status.canTakeDamage == false && hitStun == false:
+		speed = 800
+		runingAnimation = "PanicInvincible"
+	elif Status.alive == true && Status.canTakeDamage == false && hitStun == false:
+		speed = 600
+		runingAnimation = "RuningInvincible"
+	elif hitStun == false:
+		speed = 600 
+		runingAnimation = "Run"
 
 	if Input.is_action_pressed("right") && Status.alive == true:
 		input_velocity.x += 1
@@ -109,4 +139,7 @@ func _physics_process(delta):
 		$AnimatedSprite.play("Falling")
 		
 	if(Status.alive == false && Status.diedMissile):
+		$AnimatedSprite.play("DiedExplosion")
+		
+	if(Status.alive == false && Status.diedFire):
 		$AnimatedSprite.play("Burning")
