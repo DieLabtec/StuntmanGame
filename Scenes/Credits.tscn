@@ -7,10 +7,10 @@
 size = 30
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.0117647, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 1 )
 
@@ -34,7 +34,6 @@ margin_bottom = 366.207
 custom_fonts/font = SubResource( 1 )
 text = "Music"
 align = 1
-percent_visible = -0.2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,7 +53,7 @@ margin_left = 151.432
 margin_top = -6.94604
 margin_right = 322.432
 margin_bottom = 22.054
-text = "Link to there Soundcloud"
+text = "Link to their Soundcloud"
 
 [node name="Controllerhead" type="Label" parent="Music"]
 margin_left = -75.8923
@@ -71,7 +70,7 @@ margin_left = 147.865
 margin_top = -8.13525
 margin_right = 331.865
 margin_bottom = 20.8647
-text = "Link to there Opengameart"
+text = "Link to Opengameart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -87,11 +86,11 @@ __meta__ = {
 }
 
 [node name="3xBlast" type="Button" parent="Music/3xBlast"]
-margin_left = 147.27
+margin_left = 147.865
 margin_top = -7.54065
-margin_right = 331.27
+margin_right = 331.865
 margin_bottom = 21.4594
-text = "Link to there Opengameart"
+text = "Link to Opengameart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,7 +122,7 @@ margin_left = 147.27
 margin_top = -7.54065
 margin_right = 331.27
 margin_bottom = 21.4594
-text = "Link to there Twitter"
+text = "Link to their Twitter"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -195,22 +194,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="3xBlast2" type="Label" parent="Music2"]
+[node name="themightyglider" type="Label" parent="Music2"]
 margin_left = -77.0567
 margin_top = 51.4229
 margin_right = 31.9433
 margin_bottom = 66.4229
-text = "3Xblast"
+text = "themightyglider"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TheMightyglider" type="Button" parent="Music2/3xBlast2"]
+[node name="themightyglider" type="Button" parent="Music2/themightyglider"]
 margin_left = 147.27
 margin_top = -7.54065
 margin_right = 331.27
 margin_bottom = 21.4594
-text = "Link to there Opengameart"
+text = "Link to Opengameart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -250,7 +249,7 @@ margin_left = 147.27
 margin_top = -7.54065
 margin_right = 331.27
 margin_bottom = 21.4594
-text = "Link to there Opengameart"
+text = "Link to Opengameart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -270,7 +269,7 @@ margin_left = 147.937
 margin_top = -7.54065
 margin_right = 331.937
 margin_bottom = 21.4594
-text = "Link to there Opengameart"
+text = "Link to Opengameart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -290,7 +289,7 @@ margin_left = 147.937
 margin_top = -7.54065
 margin_right = 331.937
 margin_bottom = 21.4594
-text = "Link to there Opengameart"
+text = "Link to Opengameart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -300,8 +299,8 @@ margin_left = 141.0
 margin_top = 890.0
 margin_right = 400.0
 margin_bottom = 976.0
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -311,9 +310,9 @@ __meta__ = {
 [connection signal="pressed" from="Music/3xBlast/3xBlast" to="." method="_on_3xBlast_pressed"]
 [connection signal="pressed" from="Art/BuzzerZero/BuzzerZero" to="." method="_on_BuzzerZero_pressed"]
 [connection signal="pressed" from="Programming/DieLabtec/DieLabtec" to="." method="_on_BuzzerZero_pressed"]
-[connection signal="pressed" from="Music2/3xBlast2/TheMightyglider" to="." method="_on_TheMightyglider_pressed"]
+[connection signal="pressed" from="Music2/themightyglider/themightyglider" to="." method="_on_themightyglider_pressed"]
 [connection signal="pressed" from="Music2/Blender Foundation/Blender Foundation" to="." method="_on_Blender_Foundation_pressed"]
 [connection signal="pressed" from="Music2/Blender Foundation2/Blender Foundation" to="." method="_on_Blender_Foundation_pressed"]
 [connection signal="pressed" from="Music2/NenadSimic/NenadSimic" to="." method="_on_NenadSimic_pressed"]
-[connection signal="pressed" from="Music2/blacklodgegames/blacklodgegames" to="." method="_on_NenadSimic_pressed"]
+[connection signal="pressed" from="Music2/blacklodgegames/blacklodgegames" to="." method="_on_blacklodgegames_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]

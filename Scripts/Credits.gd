@@ -52,5 +52,15 @@ func _on_MainMenu_pressed():
 
 
 func _on_BuzzerZero_pressed():
-	OS.shell_open("https://opengameart.org/content/picked-coin-echo-2")
+	OS.shell_open("https://twitter.com/BuzzerZero")
+	pass # Replace with function body.
+
+
+func _on_blacklodgegames_pressed():
+	OS.shell_open("https://opengameart.org/content/27-metal-audio-samples-sfx")
+	pass # Replace with function body.
+
+
+func _on_themightyglider_pressed():
+	OS.shell_open("https://opengameart.org/content/catching-fire")
 	pass # Replace with function body.

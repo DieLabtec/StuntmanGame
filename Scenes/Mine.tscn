@@ -23,19 +23,21 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 12 ), null ],
-"loop": false,
-"name": "Exploading",
-"speed": 9.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Detonating",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 12 ), null ],
+"loop": false,
+"name": "Exploading",
+"speed": 9.0
 } ]
 
 [node name="Area2D" type="Area2D"]
 position = Vector2( 234.016, 130.31 )
+z_index = 3
+z_as_relative = false
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
