@@ -12,14 +12,16 @@ func _ready():
 	add_child(decreasingTimer)
 	decreasingTimer.start()
 	
+	
 	print(get_node("/root/Node2D/ProgressBar").value)
 	
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	
+	pass
 
 func onTimerOut():
 	if(value > 0 && Status.alive == true && get_tree().paused == false):
